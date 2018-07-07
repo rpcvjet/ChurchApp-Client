@@ -38,8 +38,6 @@ class AddAct extends Component {
           
                 <h1> I commited an act of... </h1>
 
-             
-
                  <Form.Group inline>
                   <Form.Radio value='Witness' control={Radio} label="Witness" checked={value === 'Witness'} onChange={this.handleTypeChange}/>
                   <Form.Radio value="Kindness" checked={value === 'Kindness'} onChange={this.handleTypeChange} label="Kindness" />

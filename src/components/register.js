@@ -47,9 +47,7 @@ class Register extends Component {
 
         return(
        <div className="register-wrapper">
-        <Grid textAlign='center' style={{height: '100%'}} verticalAlign='middle' > 
-             <Grid.Column style={{maxwidth: 400}}>
-
+     
                 <Form size='large' className="registerForm">
                     <Form.Field>
                     <label>Enter Full Name</label>
@@ -117,8 +115,7 @@ class Register extends Component {
 
 
                 </Form>
-            </Grid.Column> 
-        </Grid>
+    
         </div>
 
         )
