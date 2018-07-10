@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { Form, Modal, Grid, Button, Radio  } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { Form, Modal, Button, Radio  } from 'semantic-ui-react';
 import '../css/addact.css';
 
 
