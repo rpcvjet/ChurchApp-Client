@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Grid } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import '../css/register.css'
 
