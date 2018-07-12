@@ -1,0 +1,22 @@
+.sidebar-wrapper {
+    padding-top: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.checkboxes {
+    display: flex;
+    flex-direction: column;
+    margin: 50%;
+}
+
+.title {
+    font-size: 2.5em;
+
+}
+
+.check {
+    padding: 5%;
+}

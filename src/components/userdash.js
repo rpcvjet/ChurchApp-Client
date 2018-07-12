@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {  Button  } from 'semantic-ui-react';
 import SideBar from './util/sidebar';
+import Actlist from './util/actlist';
 import '../css/userdash.css';
 
 
@@ -14,7 +15,7 @@ class Userdash extends Component {
              <div className='wrapper'>
                 <div className='header'>
                 <div className='message'>
-                You've have performed 10 acts!
+                You have performed 10 acts!
                 </div>
 
                 <div className='addactbutton'>
@@ -30,7 +31,7 @@ class Userdash extends Component {
                 </div>
                 
                 <div className='main'>
-
+                <Actlist/>
                 
                 </div>
                 
