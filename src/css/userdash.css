@@ -4,6 +4,8 @@
     grid-template-rows: 15% auto;
     margin: auto;
     height: 100vh;
+    background-color: aqua;
+
 
 }
 
@@ -23,13 +25,18 @@
 }
 
 .main {
-    background-color: pink;
     grid-column: 2;
     grid-row: 2;
 }
 
-
-
 .message {
     font-size: 2.5em;
+}
+
+.editbutton {
+padding-right: 8%;
+}
+
+.thelist {
+    margin-top: 5%;
 }
