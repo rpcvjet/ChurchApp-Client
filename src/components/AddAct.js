@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Modal, Button, Radio  } from 'semantic-ui-react';
+import {Link } from 'react-router-dom';
 import '../css/addact.css';
 
 
@@ -32,6 +33,10 @@ class AddAct extends Component {
     return (
           <div className="actwrapper">
           
+            <div className='navicons'>
+            <Link to='/'><i className="myicons home icon">Home</i></Link>
+            <Link to='/userdash'><i className="myicons tasks icon">User Dashboard</i></Link>
+            </div>
             
             
             <Form size='massive' className='addactform' widths='equal'>

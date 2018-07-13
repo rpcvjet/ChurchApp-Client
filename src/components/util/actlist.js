@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
-import { List } from 'semantic-ui-react'
+import { List, Button } from 'semantic-ui-react'
 
 
 
 class Actlist extends Component {
     render() {
         return(
-            <div>
-              <List relaxed>
+            <div className='thelist'>
+              <List animated divided size='massive' >
               <List.Item>
+              <List.Content className='editbutton' floated='right'>
+                <Button size='big'>Edit</Button>
+              </List.Content>
                 <List.Content>
-                    <List.Header as='a'>Daniel Louise</List.Header>
+
                     <List.Description>
-                    Last seen watching{' '}
+                    You performed an act of {' '}
                     <a>
-                        <b>Arrested Development</b>
+                        <b>Kindness</b>
                     </a>{' '}
                     just now.
                     </List.Description>
                 </List.Content>
                 </List.Item>
                 <List.Item>
+                <List.Content className='editbutton' floated='right'>
+                <Button size='big'>Edit</Button>
+              </List.Content>
                 <List.Content>
-                    <List.Header as='a'>Stevie Feliciano</List.Header>
                     <List.Description>
-                    Last seen watching{' '}
+                    You performed an act of {' '}
                     <a>
-                        <b>Bob's Burgers</b>
+                        <b>Witness</b>
                     </a>{' '}
                     10 hours ago.
                     </List.Description>

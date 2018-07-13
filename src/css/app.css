@@ -1,0 +1,25 @@
+
+body {
+    border: 1px solid red;
+    
+    display: grid;
+    grid-template-columns: 100px,1fr;
+    grid-template-rows: 20%, 80%;
+    grid-template-areas: "headsection headsection"
+                         "left right"
+}
+
+.appheader {
+    grid-area:headsection;
+    border: 1px dotted green;
+}
+
+.left {
+    grid-area:left;
+    border: 1px dotted blue;
+}
+
+.right {
+    grid-area:right;
+    border: 1px dotted orange;
+}

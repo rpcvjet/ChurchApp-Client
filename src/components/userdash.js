@@ -20,9 +20,7 @@ class Userdash extends Component {
 
                 <div className='addactbutton'>
                 <Link to='/addact' >
-                <Button color='yellow' >
-                Add Act
-                </Button>
+                <Button color='yellow' >Add Act</Button>
                 </Link>
                 </div>
                 </div>
