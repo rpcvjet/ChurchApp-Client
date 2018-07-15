@@ -1,0 +1,33 @@
+.quote-wrapper {
+    margin-top: 18%;
+    top: 1%;
+  
+}
+
+.listquote {
+    margin: auto;
+    width: 80%;
+    height: 100%;  
+    font-size: 2.5em;
+    line-height: 40px;
+    animation-name: shift;
+    animation-duration: 3s;
+}
+
+.person {
+    font-size: 2.5em;
+    margin-left: 55%;
+    animation-name: nameappear;
+    /* animation-delay: 4s; */
+    animation-duration: 5s;
+}
+
+@keyframes shift {
+    from{transform: translateX(-300px)}
+    to {transform: translateX(0px)}
+}
+
+@keyframes nameappear {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
