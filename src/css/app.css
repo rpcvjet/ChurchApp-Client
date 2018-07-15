@@ -1,25 +1,37 @@
 
-body {
-    border: 1px solid red;
-    
+.app-wrapper {
     display: grid;
-    grid-template-columns: 100px,1fr;
-    grid-template-rows: 20%, 80%;
-    grid-template-areas: "headsection headsection"
-                         "left right"
+    margin: 0 auto;
+    grid-template-columns: repeat(12,1fr);
+    grid-auto-rows: minmax(100px);
+    height: 100vh;
+    grid-gap: 10px;
+    padding: 5px;
 }
 
-.appheader {
-    grid-area:headsection;
-    border: 1px dotted green;
+.headersection {
+    grid-column: 1/13;
+    border: 1px solid red;  
+    text-align: center;
+    font-size: 1.5em;
+
 }
 
-.left {
-    grid-area:left;
-    border: 1px dotted blue;
+.totalactsmessage {
+    padding-top: 3%;
+    font-size: 1.5em;
 }
 
-.right {
-    grid-area:right;
-    border: 1px dotted orange;
+.data {
+    grid-column: 8/13;
+    grid-row: 2/13; 
+    
+    border: 1px solid blue;  
+}
+
+.mainsection {
+    grid-column: 1/8;
+    grid-row: 2/13; 
+    
+    border: 1px solid orange;  
 }

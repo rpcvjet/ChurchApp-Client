@@ -7,7 +7,6 @@ import Login from './components/login';
 import Register from './components/register'
 import Userdash from './components/userdash';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import 'semantic-ui-css/semantic.min.css';
 
 
 ReactDOM.render(

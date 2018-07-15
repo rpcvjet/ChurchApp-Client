@@ -14,15 +14,15 @@ class Userdash extends Component {
         return(
              <div className='wrapper'>
                 <div className='header'>
-                <div className='message'>
-                You have performed 10 acts!
-                </div>
+                    <div className='message'>
+                    You have performed 10 acts!
+                    </div>
 
-                <div className='addactbutton'>
-                <Link to='/addact' >
-                <Button color='yellow' >Add Act</Button>
-                </Link>
-                </div>
+                    <div className='addactbutton'>
+                    <Link to='/addact' >
+                    <Button color='yellow' >Add Act</Button>
+                    </Link>
+                    </div>
                 </div>
                 <div className='sidebar'>
                 <SideBar />
