@@ -34,11 +34,12 @@ class AddAct extends Component {
           <div className="actwrapper">
           
             <div className='navicons'>
-            <Link to='/'><i className="myicons home icon">Home</i></Link>
-            <Link to='/userdash'><i className="myicons tasks icon">User Dashboard</i></Link>
+            <Link to='/'><i className="myicons home icon"></i></Link>
+            <Link to='/userdash'><i className="myicons user icon"></i></Link>
+            <Link to=''><i className="myicons eject icon"></i></Link>   
+
             </div>
-            
-            
+
             <Form size='massive' className='addactform' widths='equal'>
           
                 <h1> I commited an act of... </h1>
@@ -50,10 +51,8 @@ class AddAct extends Component {
 
                 </Form.Group>
             
-
                 <h2> on </h2>
-                
-             
+                        
               <div className="datepicker"  >
                 <input 
                 type="date" 
@@ -61,17 +60,12 @@ class AddAct extends Component {
              />
               </div>
 
-             
-              <h2> by </h2>
-
-             
+              <h2> by </h2>       
               <Form.TextArea placeholder='explain your act...'
               value={this.state.text}
               onChange={this.handleTextChange}
               
               />  
-
-
               <Form.Button onClick={this.show('small')} size='large' color='green' className='actbutton'>Submit</Form.Button>
 
                 <Modal size={size} open={open} onClose={this.close}>

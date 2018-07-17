@@ -3,10 +3,6 @@ import { Form, Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import '../css/register.css'
 
-
-
-
-
 class Register extends Component {
 
     state = {

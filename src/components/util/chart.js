@@ -25,7 +25,7 @@ class BarChart extends Component {
     
     render () {
 
-        const { value } = this.state.data
+        // const { value } = this.state.data
 
         return(
             <div>

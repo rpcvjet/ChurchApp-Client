@@ -1,45 +1,80 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import {  Button  } from 'semantic-ui-react';
-import SideBar from './util/sidebar';
-import Actlist from './util/actlist';
+import React, { Component } from 'react'
+import {Link } from 'react-router-dom';
+import ActList from '../components/util/actlist'
+
+import { Button, Icon, Menu, Segment, Sidebar, Checkbox } from 'semantic-ui-react'
 import '../css/userdash.css';
 
+ class UserDash extends Component {
+  state = { visible: false }
 
+  handleButtonClick = () => this.setState({ visible: !this.state.visible })
 
+  handleSidebarHide = () => this.setState({ visible: false })
 
-class Userdash extends Component {
+  render() {
+    const { visible } = this.state
 
-    render() {
-        return(
-             <div className='wrapper'>
-                <div className='header'>
-                    <div className='message'>
-                    You have performed 10 acts!
+    return (
+      <div>
+       
+        <Sidebar.Pushable as={Segment}>
+          <Sidebar className='thebar'
+            as={Menu}
+            animation='overlay'
+            icon='labeled'
+            inverted
+            onHide={this.handleSidebarHide}
+            vertical
+            visible={visible}
+            width='thin'
+          >
+             
+            <Menu.Item>
+            
+            <Link to='/'><Icon className='icon' name='home' size='big' /></Link>
+              Home
+            </Menu.Item>
+
+            <Menu.Item>
+            <Link to=''><Icon name='sign out alternate' size='big'/>LogOut</Link>
+
+            </Menu.Item>
+          </Sidebar>
+
+            <Sidebar.Pusher>
+                <div className='wrapper'>
+                    <div className='header'> 
+                        <Icon name='align justify' className='icon' onClick={this.handleButtonClick}></Icon>
+                        
+                        <div as='h3'>You've Commited 10 acts!</div>
+                        <div> 
+                            <Link to='/addact'>
+                            <Button size='big'color='yellow'>Add Act</Button>
+                            </Link>
+                        </div>
                     </div>
 
-                    <div className='addactbutton'>
-                    <Link to='/addact' >
-                    <Button color='yellow' >Add Act</Button>
-                    </Link>
+                    <div className='sidebar'>
+
+                        <div className='checkboxes'>
+                            <Checkbox className='check' label='Kindness' defaultChecked />
+                            <Checkbox className='check' label='Witness' defaultChecked />
+                            <Checkbox className='check' label='Encouragement' defaultChecked />
+                        </div>
                     </div>
-                </div>
-                <div className='sidebar'>
-                <SideBar />
-                </div>
-                
-                <div className='main'>
-                <Actlist/>
-                
-                </div>
-                
-            </div>
-        )
-    }
 
+                    <div className='main'>
+                        <ActList/>
 
+                    </div>
 
+                </div>
+            </Sidebar.Pusher>
+        </Sidebar.Pushable>
+      </div>
+    )
+  }
 }
 
-
-export default Userdash;
+export default UserDash;

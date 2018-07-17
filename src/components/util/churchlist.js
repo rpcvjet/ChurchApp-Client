@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-
 import '../../css/churchlist.css';
 
 const quotes = [{text:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, to',name:'John'}, {text:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.', name: 'Ken'}, {text:'I sick and tired of being sick and tired',name:'Sojurner Truth'}];
@@ -32,9 +30,6 @@ class ChurchList extends Component {
     }
     
     render() {
-        const  {hide, show, visible} = this.state;
-
-        console.log(this.state)
         return(
             <div className='quote-wrapper'>
            
