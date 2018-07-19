@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Modal, Button, Radio  } from 'semantic-ui-react';
+import { Form, Modal, Button, Radio ,Icon, Menu, Segment, Sidebar } from 'semantic-ui-react';
 import {Link } from 'react-router-dom';
 import '../css/addact.css';
 
@@ -8,11 +8,13 @@ class AddAct extends Component {
   state = {
     text:'',
     value:'',
-
+    visible: false,
     date:null,
     open: false
   };
+  handleButtonClick = () => this.setState({ visible: !this.state.visible })
 
+  handleSidebarHide = () => this.setState({ visible: false })
 
   handleTypeChange = (e, { value }) => this.setState({value})
 
@@ -27,16 +29,41 @@ class AddAct extends Component {
 
   render() {
 
-    const { value, open, size } = this.state;
-
-        console.log(this.state)
+    const { value, open, size, visible } = this.state;
     return (
+      <Sidebar.Pushable as={Segment}>
+      <Sidebar className='thebar'
+        as={Menu}
+        animation='overlay'
+        duration='9100'
+        direction='left'
+        icon='labeled'
+        inverted
+        onHide={this.handleSidebarHide}
+        vertical
+        visible={visible}
+        width='thin'
+        >
+         
+         <Menu.Item>           
+        <Link to='/'><Icon className='home' name='home'/>Home</Link>            
+        </Menu.Item>
+        <Menu.Item>           
+        <Link to='/userdash'><Icon className='user' name='user'/>MyActs</Link>            
+        </Menu.Item>
+        
+        <Menu.Item>
+          <Link to=''><Icon name='sign out alternate' size='big'/>LogOut</Link>
+        </Menu.Item>
+      
+      </Sidebar>
+
+        <Sidebar.Pusher>
           <div className="actwrapper">
           
             <div className='navicons'>
-            <Link to='/'><i className="myicons home icon"></i></Link>
-            <Link to='/userdash'><i className="myicons user icon"></i></Link>
-            <Link to=''><i className="myicons eject icon"></i></Link>   
+            <Icon name='align justify' className='icon' onClick={this.handleButtonClick} ></Icon>
+ 
 
             </div>
 
@@ -80,10 +107,10 @@ class AddAct extends Component {
                 </Modal>
         
               </Form>
-            
+           </div>
 
-     
-       </div>
+        </Sidebar.Pusher>
+          </Sidebar.Pushable>
       
     );
   }
