@@ -17,8 +17,13 @@ Each user will be required to register and login.
 :point_left: == Currently working on
 ## TODO:
   ~~-Create UI and wire Components to collect state in all inputs~~
+
   -Write Unit Tests :point_left:
+
   -Use CSS Grid to make app Mobile Friendly :point_left:
+
   -Install Redux to collect global state
+
   -Discuss design and feel of app with Mom
+  
   -Deploy
