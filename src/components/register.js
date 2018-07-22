@@ -104,7 +104,7 @@ class Register extends Component {
                     </div>  
 
                      <div className='rglink'>
-                        <Link to ='/login' >
+                        <Link to ={'/login'} >
                             Already registered? Login Here.
                         </Link>
                     </div>
