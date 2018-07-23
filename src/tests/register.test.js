@@ -1,16 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Register from '../components/register';
-import {MemoryRouter} from 'react-router-dom';
-import renderer from 'react-test-renderer';
-import { renderComponent } from 'recompose';
+
 
 describe ('Register label text', () => {
 
     let register = shallow(<Register /> )
 
     it('shows text of full name', () => {
-        // console.log(register.debug());
         expect(register.find('label').at(0).text()).toEqual('Enter Full Name');
     })
     it('shows text of Email address', () => {
