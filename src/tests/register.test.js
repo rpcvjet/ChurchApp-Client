@@ -7,10 +7,10 @@ import { renderComponent } from 'recompose';
 
 describe ('Register label text', () => {
 
-    let register = shallow(<Register fullname={{fullname: 'Joey Holiday'}} /> )
+    let register = shallow(<Register /> )
 
     it('shows text of full name', () => {
-        console.log(register.debug());
+        // console.log(register.debug());
         expect(register.find('label').at(0).text()).toEqual('Enter Full Name');
     })
     it('shows text of Email address', () => {
@@ -27,10 +27,66 @@ describe ('Register label text', () => {
         it('creates a form component', () => {
             expect(register.find('Form').exists()).toBe(true);
         })
+
+        it('renders the Form Field component', () => {
+            expect(register.find('FormField').exists()).toBe(true);
+        })
+        it('renders the Form Input component', () => {
+            expect(register.find('FormInput').exists()).toBe(true);
+        })
         it('creates a Button', () => {
             expect(register.find('Button').exists()).toBe(true);
         })
     
+    })
+
+    describe('when typing in data', () => {
+            let myname = 'John Doe'
+        beforeEach(() => {
+            register.find('FormInput').at(0).simulate('change', {
+                target: { value :myname }
+            });
+        });
+        it('updates the fullname state', () => {
+            expect(register.state().fullname).toEqual(myname);
+        })
+        let myemail = 'johnnybravo@gmail.com'
+
+        beforeEach(() => {
+            register.find('FormInput').at(1).simulate('change', {
+                target: { value :myemail }
+            });
+        });
+        it('updates the email state', () => {
+            expect(register.state().email).toEqual(myemail);
+        })
+
+        //password test
+        let mypassword = 'somepassword!#@'
+
+        beforeEach(() => {
+            register.find('FormInput').at(2).simulate('change', {
+                target: { value :mypassword }
+            });
+        });
+        it('updates the password state', () => {
+            expect(register.state().password).toEqual(mypassword);
+        })
+        //confirm password test
+        let myconfirmationpassword = 'anothercrazypassword!#@'
+
+
+        beforeEach(() => {
+            register.find('FormInput').at(3).simulate('change', {
+                target: { value :myconfirmationpassword }
+            });
+        });
+        it('updates the password state', () => {
+            expect(register.state().confirmpassword).toEqual(myconfirmationpassword);
+        })
+
+
+
     })
 });
 
