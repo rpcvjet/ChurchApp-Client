@@ -39,8 +39,6 @@ class Register extends Component {
         const isEnabled = fullname.length > 3 && email.length > 0 && password.length > 3 
         && confirmpassword.length > 3;
 
-        console.log(this.state)
-
         return(
        <div className="register-wrapper">
      
