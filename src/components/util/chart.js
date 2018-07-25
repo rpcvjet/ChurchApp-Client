@@ -5,13 +5,13 @@ const barData = [
 
     {
         name: 'Total',
-        value: 10
+        value: 100
     }
 ]
 
 const marginObject = {
     left: 100,
-    right: 50,
+    right: 150,
     top: 59,
     bottom: 5,
 };
@@ -19,9 +19,6 @@ const marginObject = {
 class BarChart extends Component {
 
   
-    state = {
-        data: [{value: 5}]
-    }
     
     render () {
 
@@ -31,9 +28,10 @@ class BarChart extends Component {
             <div>
 
                 <Bar 
+                labelsMargin={0}
                 height={500}
                 data={barData}
-                width={400}
+                width={450}
                 isHorizontal={false}
                 margin={marginObject}
                 />

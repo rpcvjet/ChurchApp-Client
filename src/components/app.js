@@ -51,13 +51,14 @@ class App extends Component {
 
                 <Icon name='align justify' className='icon' onClick={this.handleButtonClick} ></Icon>
                    
-                    <div className='totalactsmessage'>                
-                    Acts completed: 100 
-                    </div>
+                    <div className='totalactsmessage'>Acts completed: 100</div>
+                    <div className='smallmessage'>Acts: 100</div>
                 </div>
                
                 <div className='data'>
-                    <BarChart />
+                    <div className='d3'>
+                    <BarChart  />
+                    </div>
                 
                 </div>
                 <div className='mainsection'>
