@@ -1,3 +1,4 @@
+
 .register-wrapper {
     display: flex;
     align-items: center;
@@ -7,7 +8,6 @@
      padding: 0 auto;
      background-color: aqua;
 }
-
 
 .registerForm{
     text-align: center;
@@ -23,9 +23,37 @@
     margin-top: 5%;
 }
 
+/* mobile */
+@media screen and (max-width: 450px) {
+    .register-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+         margin:  0 auto;
+         padding: 0 auto;
+         background-color: aqua;
+    }
+    
+    
+    .registerForm{
+        text-align: center;
+        background-color: yellow;
+        margin: auto;
+        border-radius: 10px;
+        padding: 150px 15px;
+        border: 5px solid black;
+        width:100%
+    }
+    
+    .rglink {
+        margin-top: 5%;
+    }
+    
 
-body, html {
-    height:  100%;
-    margin:  0px auto;
-    padding: 0px auto;
+
 }
+
+
+
+
+

@@ -1,4 +1,4 @@
-import React, { Component,Fragment } from 'react';
+import React, { Component } from 'react';
 import { Form, Header } from 'semantic-ui-react'
 import {Link} from 'react-router-dom';
 import '../css/login.css'
@@ -33,7 +33,6 @@ handlePasswordChange = event => {
     const isEnabled = email.length > 0 && password.length > 0;
 
      return(
-        <Fragment>
        
         <div className='loginwrapper'>
     
@@ -77,7 +76,6 @@ handlePasswordChange = event => {
             </div>
         </Form>
         </div>
-        </Fragment>
      )
  }
 

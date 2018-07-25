@@ -32,9 +32,7 @@ import '../css/userdash.css';
              
             <Menu.Item>
             
-            <Link to='/'><Icon className='icon' name='home' size='big' /></Link>
-              Home
-            </Menu.Item>
+            <Link to='/'><Icon className='homeicon' name='home' size='big' />Home</Link></Menu.Item>
 
             <Menu.Item>
             <Link to=''><Icon name='sign out alternate' size='big'/>LogOut</Link>

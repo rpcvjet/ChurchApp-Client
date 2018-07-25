@@ -46,7 +46,7 @@ class AddAct extends Component {
         >
          
          <Menu.Item>           
-        <Link to='/'><Icon className='home' name='home'/>Home</Link>            
+        <Link to='/'><Icon className='home' name='home' size='big'/>Home</Link>            
         </Menu.Item>
         <Menu.Item>           
         <Link to='/userdash'><Icon className='user' name='user'/>MyActs</Link>            
