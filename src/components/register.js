@@ -107,20 +107,11 @@ class Register extends Component {
                                  Login Here.</p> 
                         </Link>
                     </div>
-
-
-                </Form>
-    
+                </Form>   
         </div>
 
         )
     }
-
-
-
-
-
-
 }
 
 

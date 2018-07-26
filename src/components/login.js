@@ -3,11 +3,6 @@ import { Form, Header } from 'semantic-ui-react'
 import {Link} from 'react-router-dom';
 import '../css/login.css'
 
-const divstyle = {
-    width: 250,
-    
-}
-
 
 class Login extends Component {
 
@@ -37,44 +32,44 @@ handlePasswordChange = event => {
         <div className='loginwrapper'>
     
         
-        <Form size='large' className='loginform'>
-         <Header className='header' as='h2'>
-             ChurchApp
-        </Header>
-           
+            <Form size='large' className='loginform'>
+                
+                <h1>ChurchApp</h1>
 
-            <Form.Field style={divstyle}>
-            <label>Email</label>
-            <Form.Input 
-                fluid icon='user'
-                iconPosition='left' 
-                placeholder='email' 
-                type='email'
-                onChange={this.handleChange}
-                value={this.state.email}  
-            />
-            </Form.Field>
-              
-            <Form.Field style= {divstyle}>
-            <label>Password</label>
-            <Form.Input placeholder='password'
-                iconPosition='left' 
-                type='password'
-                fluid icon='lock'
-                onChange={this.handlePasswordChange}
-                value={this.state.password}
-            />
-            </Form.Field>
-            <div className='button'>
-            <Form.Button disabled = {!isEnabled} color='green' type='submit'>Login</Form.Button>
-            </div>
+                <Form.Field>
+                <label>Email</label>
+                <Form.Input 
+                    fluid icon='user'
+                    iconPosition='left' 
+                    placeholder='email' 
+                    type='email'
+                    onChange={this.handleChange}
+                    value={this.state.email}  
+                />
+                </Form.Field>
+                
+                <Form.Field>
+                <label>Password</label>
+                <Form.Input placeholder='password'
+                    iconPosition='left' 
+                    type='password'
+                    fluid icon='lock'
+                    onChange={this.handlePasswordChange}
+                    value={this.state.password}
+                />
+                </Form.Field>
 
-            <div className='link'>
-            <Link to ='/register' >
-                Not signed up? Click here to Register.
-            </Link>
-            </div>
-        </Form>
+                <div className='loginbutton'>
+                <Form.Button disabled = {!isEnabled} color='green' type='submit'>Login</Form.Button>
+                </div>
+
+                <div className='link'>
+                <Link to ='/register'> 
+                <p>Not signed up? Click here to Register.</p>
+
+                </Link>
+                </div>
+            </Form>
         </div>
      )
  }
