@@ -10,29 +10,23 @@ class Actlist extends Component {
               <List animated divided size='massive' >
               <List.Item>
               <List.Content className='editbutton' floated='right'>
-                <Button size='big'>Edit</Button>
               </List.Content>
-                <List.Content>
+                <List.Content className='listcontent'>
 
                     <List.Description>
-                    You performed an act of {' '}
-                    <a>
-                        <b>Kindness</b>
-                    </a>{' '}
-                    just now.
+                    <h3>You performed an act of Kindness  just now.</h3>
                     </List.Description>
                 </List.Content>
                 </List.Item>
                 <List.Item>
                 <List.Content className='editbutton' floated='right'>
-                <Button size='big'>Edit</Button>
               </List.Content>
                 <List.Content>
                     <List.Description>
-                    You performed an act of {' '}
+                    You performed an act of
                     <a>
                         <b>Witness</b>
-                    </a>{' '}
+                    </a>
                     10 hours ago.
                     </List.Description>
                 </List.Content>

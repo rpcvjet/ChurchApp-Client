@@ -4,22 +4,45 @@
         display: grid;
         margin: 0 auto;
         grid-template-columns: repeat(12,1fr);
-        grid-auto-rows: minmax(100px);
+        grid-auto-rows: minmax(100px, auto);
+        width: 100%;
         height: 100vh;
         grid-gap: 10px;
         padding: 5px;
         background-color: aqua;
-
-
+        grid-template-areas:
+        "header header header header header header header header header header header header"
+        "sidebar sidebar main main main main main main main main main main "
+        "sidebar sidebar main main main main main main main main main main "
+        "sidebar sidebar main main main main main main main main main main "
+        "sidebar sidebar main main main main main main main main main main "
     }
+
+    .header {
+        font-size: 2.5em;
+        grid-area: header;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    
+        }
 
 
     .sidebar {
-        grid-column: 1/3;
-        grid-row:2/13;
+        grid-area: sidebar;
         align-items: center;    
 
     }
+
+    .mobileMessage {
+        display: none;
+        visibility: hidden;
+    }
+
+    .main {
+        grid-area: main;
+        }
 
     .checkboxes {
         display: flex;
@@ -32,22 +55,6 @@
         font-size: 2.5em;
         padding: 25% 0px 0px 23%;
 
-    }
-
-    .header {
-    font-size: 2.5em;
-    text-align: center;
-    grid-column: 1/13;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    }
-
-    .main {
-    grid-column: 3/13;
-    grid-row: 2/13;
-    
     }
 
     .message {
@@ -71,6 +78,32 @@
 /* mobile view */
 @media screen and (max-width: 611px) {
 
+    .wrapper{
+        display: grid;
+        margin: 0 auto;
+        grid-template-columns: repeat(1fr);
+        grid-auto-rows: minmax(125px, auto);
+        height: 100vh;
+
+        grid-gap: 10px;
+        padding: 5px;
+        background-color: aqua;
+        grid-template-areas:
+        "header"
+        "main"
+        "main"
+        "main"
+        "main"
+        "main"
+        "main"
+        "main"
+        "main"
+        "main"
+        "main"
+        "main"
+        
+    }
+
     .addactbutton {
         display: none;
         visibility: hidden;
@@ -79,7 +112,6 @@
     .sidebar {
         display: none;
         visibility: hidden;
-
     }
 
     .desktopMessage {
@@ -90,25 +122,24 @@
 
     .mobileMessage {
         align-self: center;
-        padding-right: 45px;
+        margin-left: 15%;
         font-size: 2em;
     }
 
+    .main {
+        grid-area: main;
+        font-size:.5em;
+        
+    }
+
+    .header {
+        font-size: 2.5em;
+        grid-area: header;  
+    
+    }
 
 
     /* not changing anything below */
-    .wrapper{
-        display: grid;
-        margin: 0 auto;
-        grid-template-columns: repeat(12,1fr);
-        grid-auto-rows: minmax(100px);
-        height: 100vh;
-        grid-gap: 10px;
-        padding: 5px;
-        background-color: aqua;
-
-
-    }
 
     .checkboxes {
         display: flex;
@@ -121,24 +152,6 @@
         font-size: 2.5em;
         padding: 25% 0px 0px 23%;
 
-    }
-
-    .header {
-    font-size: 2.5em;
-    text-align: center;
-    grid-column: 1/13;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    }
-
-    .main {
-    grid-column: 3/13;
-    grid-row: 2/13;
-    font-size:.5em;
-    width:100%
-    
     }
 
     .editbutton {

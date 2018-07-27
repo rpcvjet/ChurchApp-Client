@@ -11,7 +11,7 @@ describe('When the login form mounts', () => {
             expect(login.find('Form').exists()).toBe(true);
         })
     it('it renders the login header', () => {
-        expect(login.find('Header').exists()).toBe(true);
+        expect(login.find('h1').exists()).toBe(true);
     })
     it('test rendering Form Field 1', () => {
         expect(login.find('FormField').at(0).exists()).toBe(true);       
