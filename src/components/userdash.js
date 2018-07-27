@@ -32,12 +32,21 @@ import '../css/userdash.css';
              
             <Menu.Item>
             
-            <Link to='/'><Icon className='homeicon' name='home' size='big' />Home</Link></Menu.Item>
+            <Link to='/'><Icon className='homeicon' name='home' size='big' />Home</Link>
+            
+            </Menu.Item>
+
+             <Menu.Item className='addactNavbar'>
+            <Link to='/addact'><Icon name='edit' size='large'/>Add Act</Link>
+
+            </Menu.Item>
 
             <Menu.Item>
             <Link to=''><Icon name='sign out alternate' size='big'/>LogOut</Link>
 
             </Menu.Item>
+
+           
           </Sidebar>
 
             <Sidebar.Pusher>
@@ -45,10 +54,11 @@ import '../css/userdash.css';
                     <div className='header'> 
                         <Icon name='align justify' className='icon' onClick={this.handleButtonClick}></Icon>
                         
-                        <div as='h3'>You've Commited 10 acts!</div>
-                        <div> 
+                        <h1 className='desktopMessage'>You've Commited 10 Acts!</h1>
+                        <h1 className='mobileMessage'>Acts: 10</h1>
+                        <div className='addactbutton'> 
                             <Link to='/addact'>
-                            <Button size='big'color='yellow'>Add Act</Button>
+                            <Button  size='big'color='yellow'>Add Act</Button>
                             </Link>
                         </div>
                     </div>
