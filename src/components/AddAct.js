@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component , Fragment} from 'react';
 import { Form, Modal, Button, Radio ,Icon, Menu, Segment, Sidebar, TextArea } from 'semantic-ui-react';
 import {Link } from 'react-router-dom';
 import '../css/addact.css';
+
+import NavBar from '../components/util/navbar'
 
 
 class AddAct extends Component {
@@ -33,33 +35,10 @@ class AddAct extends Component {
     const { value, open, size, visible } = this.state;
     console.log(this.state)
     return (
-      <Sidebar.Pushable as={Segment}>
-        <Sidebar className='thebar'
-          as={Menu}
-          animation='overlay'
-          duration='9100'
-          direction='left'
-          icon='labeled'
-          inverted
-          onHide={this.handleSidebarHide}
-          vertical
-          visible={visible}
-          width='thin'
-          >
-          
-          <Menu.Item>           
-          <Link to='/'><Icon className='home' name='home' size='big'/>Home</Link>            
-          </Menu.Item>
-          <Menu.Item>           
-          <Link to='/userdash'><Icon className='user' name='user'/>MyActs</Link>            
-          </Menu.Item>
-          
-          <Menu.Item>
-            <Link to=''><Icon name='sign out alternate' size='big'/>LogOut</Link>
-          </Menu.Item>
-        
-      </Sidebar>
+      <Fragment>
+      <NavBar />
 
+      
         <Sidebar.Pusher>
           <div className="actwrapper">
                
@@ -115,8 +94,7 @@ class AddAct extends Component {
            </div>
 
         </Sidebar.Pusher>
-          </Sidebar.Pushable>
-      
+      </Fragment>
     );
   }
 
