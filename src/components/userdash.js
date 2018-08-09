@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import {Link } from 'react-router-dom';
+import React, { Component, Fragment } from 'react'
 import ActList from '../components/util/actlist'
-
-import { Button, Icon, Menu, Segment, Sidebar, Checkbox } from 'semantic-ui-react'
+import NavBar from '../components/util/navbar'
+import {FormGroup, Checkbox} from 'react-bootstrap';
 import '../css/userdash.css';
 
  class UserDash extends Component {
@@ -13,63 +12,35 @@ import '../css/userdash.css';
   handleSidebarHide = () => this.setState({ visible: false })
 
   render() {
-    const { visible } = this.state
 
     return (
-      <div>
-       
-        <Sidebar.Pushable as={Segment}>
-          <Sidebar className='thebar'
-            as={Menu}
-            animation='overlay'
-            icon='labeled'
-            inverted
-            onHide={this.handleSidebarHide}
-            vertical
-            visible={visible}
-            width='thin'
-          >
-             
-            <Menu.Item>
-            
-            <Link to='/'><Icon className='homeicon' name='home' size='big' />Home</Link>
-            
-            </Menu.Item>
+                <Fragment>
+                
+                <NavBar />
+                <div className='mobilesidebar'>
+                     <FormGroup className='checkboxes' >
+                        <Checkbox inline className='check' defaultChecked>Witness</Checkbox> 
+                        <Checkbox inline className='check' defaultChecked>Encouragement</Checkbox>
+                        <Checkbox inline className='check' defaultChecked>Kindness</Checkbox>
+                    </FormGroup>
+                    </div>
 
-             <Menu.Item className='addactNavbar'>
-            <Link to='/addact'><Icon name='edit' size='large'/>Add Act</Link>
 
-            </Menu.Item>
-
-            <Menu.Item>
-            <Link to=''><Icon name='sign out alternate' size='big'/>LogOut</Link>
-
-            </Menu.Item>
-
-           
-          </Sidebar>
-
-            <Sidebar.Pusher>
+                
                 <div className='wrapper'>
                     <div className='header'> 
-                        <Icon name='align justify' className='icon' onClick={this.handleButtonClick}></Icon>
                         
                         <h1 className='desktopMessage'>You've Commited 10 Acts!</h1>
                         <h1 className='mobileMessage'>Acts: 10</h1>
-                        <div className='addactbutton'> 
-                            <Link to='/addact'>
-                            <Button  size='big'color='yellow'>Add Act</Button>
-                            </Link>
-                        </div>
+                      
                     </div>
 
                     <div className='sidebar'>
-
-                        <div className='checkboxes'>
-                            <Checkbox className='check' label='Kindness' defaultChecked />
-                            <Checkbox className='check' label='Witness' defaultChecked />
-                            <Checkbox className='check' label='Encouragement' defaultChecked />
-                        </div>
+                     <FormGroup className='checkboxes' >
+                        <Checkbox className='check' defaultChecked>Witness</Checkbox> 
+                        <Checkbox className='check' defaultChecked>Encouragement</Checkbox>
+                        <Checkbox className='check' defaultChecked>Kindness</Checkbox>
+                    </FormGroup>
                     </div>
 
                     <div className='main'>
@@ -78,9 +49,7 @@ import '../css/userdash.css';
                     </div>
 
                 </div>
-            </Sidebar.Pusher>
-        </Sidebar.Pushable>
-      </div>
+         </Fragment>
     )
   }
 }

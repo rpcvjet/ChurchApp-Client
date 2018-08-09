@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Header } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 import {Link} from 'react-router-dom';
 import '../css/login.css'
 

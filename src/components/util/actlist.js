@@ -1,38 +1,27 @@
 import React, { Component } from 'react';
-import { List, Button } from 'semantic-ui-react'
+import { ListGroup, ListGroupItem } from 'react-bootstrap'
 
 
 
 class Actlist extends Component {
+
+    
+      
+
     render() {
+
+
+        // function alertClicked() {
+        //     alert('You clicked the third ListGroupItem');
+        //   }
+
         return(
             <div className='thelist'>
-              <List animated divided size='massive' >
-              <List.Item>
-              <List.Content className='editbutton' floated='right'>
-              </List.Content>
-                <List.Content className='listcontent'>
-
-                    <List.Description>
-                    <h3>You performed an act of Kindness  just now.</h3>
-                    </List.Description>
-                </List.Content>
-                </List.Item>
-                <List.Item>
-                <List.Content className='editbutton' floated='right'>
-              </List.Content>
-                <List.Content>
-                    <List.Description>
-                    You performed an act of
-                    <a>
-                        <b>Witness</b>
-                    </a>
-                    10 hours ago.
-                    </List.Description>
-                </List.Content>
-                </List.Item>
-
-              </List>
+                 <ListGroup className='actlist'>
+                    <ListGroupItem href="#link1">You commited an act of Kindness</ListGroupItem>
+                    <ListGroupItem href="#link2">Link 2</ListGroupItem>
+                    <ListGroupItem href="#link2">Link 3</ListGroupItem>
+                </ListGroup>
             </div>
         )
     }

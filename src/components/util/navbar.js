@@ -1,31 +1,36 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {Nav, Navbar ,NavItem, NavDropdown,MenuItem } from 'react-bootstrap';
+import {Nav, Navbar } from 'react-bootstrap';
 import '../../css/navbar.css';
 
-class NavBar extends Component {
+class NavBarItem extends Component {
 
     render() {
         return(
 
-    <Navbar inverse collapseOnSelect>
-  <Navbar.Header>
-    <Navbar.Brand>
-    <Link to='/'>ChurchApp</Link>
-    </Navbar.Brand>
-    <Navbar.Toggle />
-  </Navbar.Header>
+    <Navbar  inverse collapseOnSelect>
+        <Navbar.Header >
+          <Navbar.Brand>
+            <Link to='/'>ChurchApp</Link>
+         </Navbar.Brand>
+            <Navbar.Toggle />
+        </Navbar.Header>
   <Navbar.Collapse>
    
-    <Nav pullRight>
-    <NavItem eventKey={1}>
-    <Link to='/userdash' className='bootstraplink'>MyActs</Link> 
-    </NavItem>
-    <NavItem eventKey={2}>
-    <Link to='#' className='bootstraplink'>LogOut</Link> 
-    </NavItem>
-   
+    <Nav  pullRight>
+
+        <Navbar.Brand>
+            <Link to='/userdash' className='bootstraplink'>MyActs</Link>
+         </Navbar.Brand>
+
+         <Navbar.Brand>
+            <Link to='/addact' className='bootstraplink'>AddAct</Link>
+         </Navbar.Brand>
+
+         <Navbar.Brand>
+            <Link to='#' className='bootstraplink'>Logout</Link>
+         </Navbar.Brand>
      
     </Nav>
   </Navbar.Collapse>
@@ -37,6 +42,6 @@ class NavBar extends Component {
 
 }
 
-export default NavBar;
+export default NavBarItem;
 
 

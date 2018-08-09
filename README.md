@@ -23,9 +23,9 @@ Each user will be required to register and login.
 
   -Write Unit Tests :point_left:
 
-  -Use CSS Grid to make app Mobile Friendly :point_left:
+  ~~-Use CSS Grid to make app Mobile Friendly~~
 
-  -Fix CSS :bug: on AddAct page.
+  ~~Fix CSS :bug: on AddAct page.~~
 
   -Finalize color scheme :grimacing:
 

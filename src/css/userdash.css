@@ -21,12 +21,9 @@
     .header {
         font-size: 2.5em;
         grid-area: header;
-        text-align: center;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    
+        text-align: center;  
         }
+  
 
 
     .sidebar {
@@ -40,20 +37,26 @@
         visibility: hidden;
     }
 
+    .mobilesidebar {
+        display: none;
+        visibility: hidden;
+    }
+
     .main {
         grid-area: main;
+        padding-right: 5%;
         }
 
     .checkboxes {
         display: flex;
         flex-direction: column;
-        margin-top: 11em;
+        margin-top: 2.5em;
 
     }
 
     .check {
-        font-size: 2.5em;
-        padding: 25% 0px 0px 23%;
+        font-size: 2em;
+        padding: 5% 0px 0px 23%;
 
     }
 
@@ -94,24 +97,17 @@
         "main"
         "main"
         "main"
-        "main"
-        "main"
-        "main"
-        "main"
-        "main"
-        "main"
-        "main"
+       
         
-    }
-
-    .addactbutton {
-        display: none;
-        visibility: hidden;
     }
 
     .sidebar {
         display: none;
         visibility: hidden;
+    }
+
+    .mobilesidebar {
+        text-align: center;
     }
 
     .desktopMessage {
@@ -124,11 +120,13 @@
         align-self: center;
         margin-left: 15%;
         font-size: 2em;
+        
     }
 
     .main {
         grid-area: main;
-        font-size:.5em;
+        font-size:.8em;
+        padding-right:7%;
         
     }
 
@@ -138,32 +136,19 @@
     
     }
 
-
-    /* not changing anything below */
-
     .checkboxes {
-        display: flex;
-        flex-direction: column;
-        margin-top: 11em;
+        margin-bottom: 0;
+        background-color: yellow;
 
     }
 
     .check {
-        font-size: 2.5em;
-        padding: 25% 0px 0px 23%;
-
-    }
-
-    .editbutton {
-    padding-right: 0%;
+        font-size: 1.4em;
+        padding: 5% 0% 3% 3%
     }
 
     .thelist {
-        margin-top: 5%;
-    }
-
-    .thebar .icon {
-    color:white;       
+        margin-top: 0%;
     }
 
 }
