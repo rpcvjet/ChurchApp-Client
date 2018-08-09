@@ -17,9 +17,11 @@
     .headersection {
         font-size: 2.5em;
         grid-area: header;
-        border: 1px solid blue;
         display: grid;
         grid-template-columns: 1fr;
+        text-align: center;
+        justify-self: center;
+        align-self: center;
 
     }
 
@@ -37,7 +39,6 @@
 
     .mainsection {
         grid-area: main;
-        border: 1px solid green;
 
     }
 
@@ -47,7 +48,7 @@
 
     .data {
         grid-area: data;
-        border: 1px solid orangered;   
+        /* border: 1px solid orangered;    */
         display: grid;
         grid-template-columns: 1fr;
         padding-right: 2%
@@ -83,22 +84,22 @@
         grid-template-areas:
         "header"
         "data"
-        /* "data" */
     }
 
     .headersection {
         font-size: 2.5em;
         grid-area: header;
-        border: 1px solid blue;
         display: grid;
         grid-template-columns: 1fr;
-
+         text-align: center;
+        justify-self: center;
+        align-self: center;
     }
 
     .smallmessage {
-        padding-bottom: 3%;
-        font-size: 1.5em;
+        text-align: center;
         justify-self: center;
+        font-size: 2.0em;
     }
 
     .totalactsmessage {
@@ -118,7 +119,6 @@
 
     .data {
         grid-area: data;
-        border: 1px solid orangered;   
         display: grid;
         grid-template-columns: 1fr;
         padding-right: 2%
@@ -129,11 +129,6 @@
         padding: 5px;
         font-size:1.8em;
         margin-left:10%;
-    }
-
-    .icon {
-        color: black;
-        padding: 12px;
     }
 }
 

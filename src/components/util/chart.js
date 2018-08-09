@@ -1,46 +1,47 @@
 import React, { Component } from 'react';
-import {Bar} from 'britecharts-react';
+import {Bar} from 'react-chartjs-2';
 
-const barData = [
-
-    {
-        name: 'Total',
-        value: 100
-    }
-]
-
-const marginObject = {
-    left: 100,
-    right: 150,
-    top: 59,
-    bottom: 5,
-};
-
-class BarChart extends Component {
-
+const data = {
+    labels: ['Acts'],
+    datasets: [
+      {
+        label: 'Number of Acts',
+        backgroundColor: 'rgba(255,99,132,0.2)',
+        borderColor: 'rgba(255,99,132,1)',
+        borderWidth: 2,
+        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+        hoverBorderColor: 'rgba(255,99,132,1)',
+        data: [30]   
+      }
+    ]
+  };
   
-    
-    render () {
-
-        // const { value } = this.state.data
-
-        return(
-            <div>
-
-                <Bar 
-                labelsMargin={0}
-                height={500}
-                data={barData}
-                width={450}
-                isHorizontal={false}
-                margin={marginObject}
-                />
-
-            
-            </div>
-        )
+  class BarChart extends Component {
+    // displayName: 'BarExample',
+  
+    render() {
+      return (
+        <div>
+          <Bar
+            barPercentage= {10}
+            data={data}
+            width={270}
+            height={400}
+            options={{
+              maintainAspectRatio: true,
+              scales: {
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: 500
+                    }
+                }]
+            }
+            }}
+          />
+        </div>
+      );
     }
-
-}
+  };
 
 export default BarChart;

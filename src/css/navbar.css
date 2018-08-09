@@ -1,4 +1,10 @@
-.bootstraplink{
-    font-size: 125%;
-    color: aqua;
+.bootstraplink:hover{
+    /* font-size: 125%; */
+    color: white;
+    text-decoration: none;
+    
+}
+
+.navbar {
+    margin-bottom: 0px;
 }
