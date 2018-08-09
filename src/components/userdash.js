@@ -5,11 +5,6 @@ import {FormGroup, Checkbox} from 'react-bootstrap';
 import '../css/userdash.css';
 
  class UserDash extends Component {
-  state = { visible: false }
-
-  handleButtonClick = () => this.setState({ visible: !this.state.visible })
-
-  handleSidebarHide = () => this.setState({ visible: false })
 
   render() {
 

@@ -6,11 +6,6 @@ import '../css/app.css';
 
 class App extends Component {
 
-
-    handleButtonClick = () => this.setState({ visible: !this.state.visible })
-
-    handleSidebarHide = () => this.setState({ visible: false })
-
     render() {
         
         return(

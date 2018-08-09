@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import App from "./components/app";
 import AddAct from './components/AddAct';
 import Login from './components/login';
