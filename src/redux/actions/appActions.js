@@ -14,7 +14,6 @@ export function getAllPoints() {
 }
   
  export function getAllPointsSuccess(points) {
-    console.log(points)
     return {
         type: GET_ALL_POINTS_SUCCESS,
         payload: points
