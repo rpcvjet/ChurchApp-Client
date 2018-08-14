@@ -6,8 +6,9 @@ import '../css/userdash.css';
 
  class UserDash extends Component {
 
+   
   render() {
-
+    console.log('this.props in userdash', this.props)
     return (
                 <Fragment>
                 

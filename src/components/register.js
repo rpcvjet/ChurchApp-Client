@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
+import { connect} from 'react-redux';
+import { registerUser } from '.././redux/actions/loginActions'
+import { withRouter } from 'react-router-dom';
+// import PropTypes from 'prop-types';
+
+
 import '../css/register.css'
 
 class Register extends Component {
@@ -8,7 +14,7 @@ class Register extends Component {
     state = {
         fullname: '',
         email: '',
-        password: '',
+        accesspassword: '',
         confirmpassword:''
     }
 
@@ -25,7 +31,7 @@ class Register extends Component {
 
     handlePasswordChange = (event) => {
 
-        this.setState({password: event.target.value})
+        this.setState({accesspassword: event.target.value})
     }
 
     handleConfirmChange = (event) => {
@@ -33,16 +39,35 @@ class Register extends Component {
         this.setState({confirmpassword: event.target.value})
     }
 
-    render() {
+    handleSubmit = e => {
+        e.preventDefault();
+        const user = {
+            fullname: this.state.fullname,
+            email: this.state.email,
+            accesspassword: this.state.accesspassword
+            
+        }
+        this.props.registerUser(user, this.props.history);
+    }
 
-        const {fullname, email, password, confirmpassword} = this.state;
-        const isEnabled = fullname.length > 3 && email.length > 0 && password.length > 3 
-        && confirmpassword.length > 3;
+    // componentWillReceiveProps(nextProps) {
+    //     if(nextProps.errors) {
+    //         this.setState({
+    //             errors: nextProps.errors
+    //         });
+    //     }
+    // }
+
+    render() {
+        console.log(this.props)
+        const {fullname, email, accesspassword, confirmpassword} = this.state;
+        const isEnabled = fullname.length > 3 && email.length > 0 && accesspassword === 
+        confirmpassword;
 
         return(
        <div className="register-wrapper">
      
-                <Form size='large' className="registerForm">
+                <Form size='large' className="registerForm" onSubmit={this.handleSubmit }>
                     <Form.Field>
                     <label>Enter Full Name</label>
 
@@ -114,5 +139,13 @@ class Register extends Component {
     }
 }
 
+// Register.propTypes = {
+//     registerUser: PropTypes.func.isRequired,
+// };
 
-export default Register;
+// function mapStateToProps (state) {
+//     auth: state.auth
+// };
+
+
+export default connect(null, {registerUser})(withRouter (Register));
