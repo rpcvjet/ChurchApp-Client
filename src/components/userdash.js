@@ -3,7 +3,7 @@ import ActList from '../components/util/actlist'
 import NavBar from '../components/util/navbar'
 import {FormGroup, Checkbox} from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
-import { getUserPoints } from '../redux/actions/userdashActions';
+import { getUserPoints, getActList } from '../redux/actions/userdashActions';
 
 import { connect } from 'react-redux';
 
@@ -13,11 +13,11 @@ import '../css/userdash.css';
 
     componentWillMount(){
         this.props.getUserPoints(this.props.auth.user.user.userid);
+        this.props.getActList(this.props.auth.user.user.userid);
     }
 
    
   render() {
-    console.log('this.props in userdash', this.props)
     return (
                 <Fragment>
                 
@@ -49,8 +49,9 @@ import '../css/userdash.css';
                     </div>
 
                     <div className='main'>
-                        <ActList/>
-
+                        
+                     <ActList className='listdiv' userlist={this.props.userlist.userlist}/>
+   
                     </div>
 
                 </div>
@@ -61,14 +62,15 @@ import '../css/userdash.css';
 
 
 function mapDispatchToProps (dispatch) {
-    return bindActionCreators({getUserPoints}, dispatch)
+    return bindActionCreators({getUserPoints, getActList}, dispatch)
 } 
 
 
 const mapStatetoProps = state => {
     return {
         auth: state.auth,
-        userpoints: state.userdash
+        userpoints: state.userdash,
+        userlist: state.userlist
     }
 }
 
