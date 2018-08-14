@@ -45,7 +45,7 @@
     .main {
         grid-area: main;
         padding-right: 0%;
-        overflow: scroll;
+        overflow: auto;
         margin-left: 25%;
         margin-bottom: 8%;
         }
