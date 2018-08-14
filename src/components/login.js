@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
+
 import {Link} from 'react-router-dom';
+import {loginUser} from '../redux/actions/loginActions';
+import {connect} from 'react-redux'
 import '../css/login.css'
 
 
 class Login extends Component {
+    constructor(props) {
+        super(props);
 
-state = {
-    email: '',
-    password: ''
+        this.state = {
+            email: '',
+            accesspassword: '',
+            submitted: false,
+            errors: {}
+    }
 }
 
 handleChange = event => {
@@ -16,23 +25,48 @@ handleChange = event => {
 }
 
 handlePasswordChange = event => {
-    this.setState({password: event.target.value})
+    this.setState({accesspassword: event.target.value})
 }
 
+handleSubmit = event => {
+    this.setState({submitted: true})
+    
+    const user = {
+        email: this.state.email,
+        accesspassword: this.state.accesspassword
+    }
+    this.props.loginUser(user);
+    
+}
 
+componentDidMount() {
+    if(this.props.auth.isAuthenticated) {
+        this.props.history.push('/');
+    }
+}
+
+componentWillReceiveProps(nextProps) {
+    if(nextProps.auth.isAuthenticated) {
+        this.props.history.push('/')
+    }
+    // if(nextProps.errors) {
+    //     this.setState({
+    //         errors: nextProps.errors
+    //     });
+    // }
+}
 
  render() {
-
     // setting up input validation
-    const { email, password} = this.state;
-    const isEnabled = email.length > 0 && password.length > 0;
+    const { email, accesspassword} = this.state;
+    const isEnabled = email.length > 0 && accesspassword.length > 0;
 
      return(
        
         <div className='loginwrapper'>
     
         
-            <Form size='large' className='loginform'>
+            <Form size='large' className='loginform' onSubmit={this.handleSubmit}>
                 
                 <h1>ChurchApp</h1>
 
@@ -60,7 +94,7 @@ handlePasswordChange = event => {
                 </Form.Field>
 
                 <div className='loginbutton'>
-                <Form.Button disabled = {!isEnabled} color='green' type='submit'>Login</Form.Button>
+                <Form.Button disabled = {!isEnabled} color='green' type='submit' >Login</Form.Button>
                 </div>
 
                 <div className='link'>
@@ -77,4 +111,17 @@ handlePasswordChange = event => {
 
 }
 
-export default Login;
+Login.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    // errors: PropTypes.object.isRequired
+}
+
+function mapStateToProps (state) {
+        return { 
+                 user: state, 
+                 auth: state.auth
+            }
+}
+
+export default connect (mapStateToProps, {loginUser}) (Login);
