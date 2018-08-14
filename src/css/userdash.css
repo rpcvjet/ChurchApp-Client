@@ -14,7 +14,7 @@
         "header header header header header header header header header header header header"
         "sidebar sidebar main main main main main main main main main main "
         "sidebar sidebar main main main main main main main main main main "
-        "sidebar sidebar main main main main main main main main main main "
+         "sidebar sidebar main main main main main main main main main main " 
         "sidebar sidebar main main main main main main main main main main "
     }
 
@@ -44,7 +44,10 @@
 
     .main {
         grid-area: main;
-        padding-right: 5%;
+        padding-right: 0%;
+        overflow: auto;
+        margin-left: 25%;
+        margin-bottom: 8%;
         }
 
     .checkboxes {
@@ -69,11 +72,20 @@
     }
 
     .thelist {
-        margin-top: 5%;
+        /* margin-top: 5%; */
+        margin-left: 0%;
+        font-size: 2em;
+        /* min-width: 100% */
+        margin-bottom: 0px;
+
     }
 
     .thebar .icon {
     color:white;       
+    }
+
+    .actlist {
+        margin-bottom: 0px;
     }
 
 }

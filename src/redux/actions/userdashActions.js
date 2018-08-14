@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_USERPOINTS_SUCCESS, GET_USERPOINTS_FAILURE } from './constants';
+import { GET_USERPOINTS_SUCCESS, GET_USERPOINTS_FAILURE , GET_USERACTS_SUCCESS, GET_USERACTS_FAILURE} from './constants';
 const baseUrl = 'http://localhost:4000/api';
 
 
@@ -12,7 +12,6 @@ export function getUserPoints(id) {
 }
 
 export function getPointsSuccess(userpoints) {
-        console.log('userpoints!!!!',userpoints)
     return {
         type: GET_USERPOINTS_SUCCESS,
         payload: userpoints
@@ -23,6 +22,29 @@ export function getPointsFailure(err) {
 
     return {
         type: GET_USERPOINTS_FAILURE,
+        payload: err
+    }
+}
+////
+export function getActList(id) {
+    return (dispatch) => {
+        return axios.get(`${baseUrl}/acts/`+ id)
+        .then((res) => { dispatch(getActSuccess(res)) })
+        .catch( (err) => { dispatch(getActFailure(err))  })
+    }
+}
+
+export function getActSuccess(useracts) {
+    return {
+        type: GET_USERACTS_SUCCESS,
+        payload: useracts
+    }
+}
+
+export function getActFailure(err) {
+
+    return {
+        type: GET_USERACTS_FAILURE,
         payload: err
     }
 }
