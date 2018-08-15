@@ -1,32 +1,36 @@
 import React, { Component } from 'react';
 import '../../css/churchlist.css';
 
-const quotes = [{text:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, to',name:'John'}, {text:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.', name: 'Ken'}, {text:'I sick and tired of being sick and tired',name:'Sojurner Truth'}];
-
 class ChurchList extends Component {
+   
+       state = { 
+          acts: [],
+          text:'',
+          name: '',
+          wordsArray: []
+        }
+
     
-    state = { 
-        words: '',
-        name:''
-      
+    componentWillReceiveProps(props) {
+
+        let newarray = props.allacts && props.allacts.map( word => {
+            return word.description
+     })
+        this.setState({ acts: newarray})
     }
-    
+
     componentWillMount() {
-        this.randomQuote()
+        setInterval(() => {
+            this.randomQuote()
+          }, 3000);
     }
+
+    ///render this.state.acts is rendered here
     
-    componentDidMount() {
-      setInterval(() => {
-        this.randomQuote()
-      }, 10000);
-
-    }
-
-
     randomQuote = () => {
-        let num = quotes[Math.floor(Math.random() * quotes.length)];
-        this.setState({words : num.text});
-        this.setState({name: num.name});
+        let word = this.state.acts[Math.floor(Math.random() * this.state.acts.length)];
+        this.setState({text : word});
+        // this.setState({name: num.name});
     }
     
     render() {
@@ -34,9 +38,9 @@ class ChurchList extends Component {
             <div className='quote-wrapper'>
            
                 <div className='listquote'>
-                    "{this.state.words}"   
+                    "{this.state.text}"  
                 </div>
-                <p className='person'>--{this.state.name} </p>
+                {/* <p className='person'>--{this.state.name} </p> */}
             </div>
         )
     }

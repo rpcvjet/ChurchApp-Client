@@ -3,7 +3,7 @@ import BarChart from './util/chart';
 import ChurchList from './util/churchlist'
 import NavBar from '../components/util/navbar';
 import { connect } from 'react-redux';
-import { getAllPoints } from '../redux/actions/appActions';
+import { getAllPoints, getAllActs } from '../redux/actions/appActions';
 import '../css/app.css';
 import { bindActionCreators } from 'redux';
 
@@ -13,7 +13,6 @@ class App extends Component {
         super();
         this.state = {
             chartData: {},
-            pointsarray : []
         }
     
     }
@@ -21,6 +20,7 @@ class App extends Component {
     componentWillMount() {
         
         this.props.getAllPoints();
+        this.props.getAllActs();
         this.setState({
             chartData : {
                 labels: ['Acts'],
@@ -32,7 +32,7 @@ class App extends Component {
                         borderWidth: 2,
                         hoverBackgroundColor: 'rgba(255,99,132,0.4)',
                         hoverBorderColor: 'rgba(255,99,132,1)',
-                        data:this.state.pointsarray[1]
+                        data:[20]
                     }
                  ]
                 }
@@ -40,6 +40,7 @@ class App extends Component {
         }
 
     render() {
+        // console.log(this.props)
         return(
             <Fragment>
             <NavBar/>
@@ -57,7 +58,7 @@ class App extends Component {
                 
                 </div>
                 <div className='mainsection'>
-                    <ChurchList />
+                    <ChurchList allacts={this.props.churchlist} />
                 </div>
         
             </div>
@@ -68,14 +69,15 @@ class App extends Component {
 }
 
 function mapDispathToProps(dispatch) {
-    return bindActionCreators({ getAllPoints: getAllPoints}, dispatch)
+    return bindActionCreators({ getAllPoints, getAllActs}, dispatch)
 }
 
 
 
 const mapStateToProps  = state => {
     return {
-        points: state.app
+        points: state.app,
+        churchlist: state.churchlist.churchlist
     }
 }
 

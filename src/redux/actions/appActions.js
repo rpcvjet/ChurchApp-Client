@@ -1,12 +1,11 @@
 import axios from 'axios';
-import { GET_ALL_POINTS_SUCCESS, GET_ALL_POINTS_FAILURE } from './constants';
+import { GET_ALL_POINTS_SUCCESS, GET_ALL_POINTS_FAILURE, GET_ALLACTS_SUCCESS, GET_ALLACTS_FAILURE } from './constants';
 const baseUrl = 'http://localhost:4000/api';
 
 
 export function getAllPoints() {
     return (dispatch) => {
         return axios.get(`${baseUrl}/admin/totalpoints`)
-        //this was a very long bug, be sure to return the dispatch in an object
         .then ((res) => { dispatch(getAllPointsSuccess(res)) })
         .catch((err) => { dispatch(getAllPointsError(err)) })
         
@@ -26,6 +25,30 @@ export function getAllPoints() {
         payload: error
     }
 }
+
+export function getAllActs(){
+    return (dispatch) => {
+        return axios.get(`${baseUrl}/acts`)
+        .then ((res) => { dispatch(getAllActsSuccess(res)) })
+        .catch((err) => { dispatch(getAllActsError(err)) })
+        
+    }
+}
+
+export function getAllActsSuccess(allacts) {
+    return {
+        type: GET_ALLACTS_SUCCESS,
+        payload: allacts
+    }
+}
+
+  export function getAllActsError (error) {
+    return {
+        type: GET_ALLACTS_FAILURE,
+        payload: error
+    }
+}
+
 
 
 
