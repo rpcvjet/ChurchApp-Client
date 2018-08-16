@@ -76,8 +76,8 @@ class AddAct extends Component {
 
                 <h2 className='message3 words'>by</h2>       
              
-                <div className='explainarea'>
-                  <FormControl componentClass="textarea" placeholder="textarea" 
+                <div >
+                  <FormControl className='explainarea' bsSize="large" componentClass="textarea" placeholder="Explain you act..." 
                     value={this.state.text}
                     onChange={this.handleTextChange}             
                   /> 
@@ -86,6 +86,7 @@ class AddAct extends Component {
               
                     <div className="modal-container" style={{ height: 200 }}>
           <Button
+            className='submitbutton'
             bsStyle="primary"
             bsSize="large"
             onClick={() => this.setState({ show: true })}

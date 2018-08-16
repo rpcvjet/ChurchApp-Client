@@ -46,7 +46,7 @@
         grid-area: main;
         padding-right: 0%;
         overflow: auto;
-        margin-left: 25%;
+        margin-left: 15%;
         margin-bottom: 8%;
         }
 
@@ -74,7 +74,7 @@
     .thelist {
         /* margin-top: 5%; */
         margin-left: 0%;
-        font-size: 2em;
+        font-size: 1.2em;
         /* min-width: 100% */
         margin-bottom: 0px;
 
