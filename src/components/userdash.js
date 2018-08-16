@@ -18,15 +18,17 @@ import '../css/userdash.css';
 
    
   render() {
+
+    console.log('this.props in userdash', this.props)
     return (
                 <Fragment>
                 
                 <NavBar />
                 <div className='mobilesidebar'>
                      <FormGroup className='checkboxes' >
-                        <Checkbox inline className='check' defaultChecked>Witness</Checkbox> 
-                        <Checkbox inline className='check' defaultChecked>Encouragement</Checkbox>
-                        <Checkbox inline className='check' defaultChecked>Kindness</Checkbox>
+                        <Checkbox inline className='check' >Witness</Checkbox> 
+                        <Checkbox inline className='check' >Encouragement</Checkbox>
+                        <Checkbox inline className='check' >Kindness</Checkbox>
                     </FormGroup>
                     </div>
 
@@ -42,9 +44,9 @@ import '../css/userdash.css';
 
                     <div className='sidebar'>
                      <FormGroup className='checkboxes' >
-                        <Checkbox className='check' defaultChecked>Witness</Checkbox> 
-                        <Checkbox className='check' defaultChecked>Encouragement</Checkbox>
-                        <Checkbox className='check' defaultChecked>Kindness</Checkbox>
+                        <Checkbox className='check' >Witness</Checkbox> 
+                        <Checkbox className='check' >Encouragement</Checkbox>
+                        <Checkbox className='check' >Kindness</Checkbox>
                     </FormGroup>
                     </div>
 

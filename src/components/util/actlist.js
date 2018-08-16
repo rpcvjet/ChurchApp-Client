@@ -12,7 +12,7 @@ class Actlist extends Component {
                  <ListGroup className='actlist'>{
                             this.props.userlist && this.props.userlist.map( list => {
                             return (
-                                <ListGroupItem  key={list.actsid}>{list.description}</ListGroupItem>
+                                <ListGroupItem href="#" key={list.actsid}>{list.description}</ListGroupItem>
                             )
                         })
                  }
