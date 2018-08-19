@@ -18,7 +18,7 @@ const getVisibleActs = (acts, filter) => {
 
         acts.userlist.forEach( w => {
             console.log('w', w)
-            if(w.typeofact === 'witness'){
+            if(filter.typeFilter.indexOf(w.typeofact) !== -1){
                 witnessArray.push(w)
             }
         })
@@ -26,6 +26,8 @@ const getVisibleActs = (acts, filter) => {
 
         return witnessArray
     } 
+    
+   
     
 }
 
