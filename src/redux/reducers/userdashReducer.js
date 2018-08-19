@@ -1,4 +1,6 @@
-import {GET_USERPOINTS_SUCCESS, GET_USERPOINTS_FAILURE} from '../actions/constants'
+import {GET_USERPOINTS_SUCCESS, 
+         GET_USERPOINTS_FAILURE,
+          } from '../actions/constants'
 
 const initialstate = {};
 
@@ -13,6 +15,8 @@ export function userdashReducer (state = initialstate, action){
         
         case GET_USERPOINTS_FAILURE:
         return action.payload
+
+      
 
         default:
         return state;
