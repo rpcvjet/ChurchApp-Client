@@ -4,7 +4,8 @@ import App from "./components/app";
 import AddAct from './components/AddAct';
 import Login from './components/login';
 import Register from './components/register'
-import Userdash from './components/userdash';
+// import Userdash from './components/userdash';
+import Filter from './components/util/filterList';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import {createStore, applyMiddleware, compose} from 'redux';
 import { Provider } from 'react-redux';
@@ -32,7 +33,7 @@ ReactDOM.render(
             <Route path='/addact' component={AddAct}/>
             <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
-            <Route path='/userdash' component={Userdash}/>
+            <Route path='/userdash' component={Filter}/>
         </Switch>
     </BrowserRouter>
 </Provider>, document.getElementById('root'));

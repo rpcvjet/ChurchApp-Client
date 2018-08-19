@@ -1,36 +1,53 @@
 import React, { Component, Fragment } from 'react'
 import ActList from '../components/util/actlist'
 import NavBar from '../components/util/navbar'
-import {FormGroup, Checkbox} from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
-import { getUserPoints, getActList } from '../redux/actions/userdashActions';
+import { getUserPoints, getActList, addFilterType, removeFilterType } from '../redux/actions/userdashActions';
+// import  CheckboxGroup  from '../components/util/checkboxs';
+import {FormGroup, Checkbox} from 'react-bootstrap';
 
 import { connect } from 'react-redux';
 
 import '../css/userdash.css';
 
  class UserDash extends Component {
-
+  
     componentWillMount(){
         this.props.getUserPoints(this.props.auth.user.user.userid);
         this.props.getActList(this.props.auth.user.user.userid);
     }
 
+    componentWillReceiveProps(props) {
+
+        let newarray = props.userlist
+        this.setState({ useracts: newarray})
+    }
+
+    handleTypeFilter =(event) => {
+      let priceType = event.target.value
+      if(event.target.checked) {
+          this.props.addFilterType(priceType)
+      }
+      else {
+          this.props.removeFilterType(priceType)
+      }
+
+    }
+
    
   render() {
-
+      
     console.log('this.props in userdash', this.props)
+    
+    
     return (
                 <Fragment>
                 
                 <NavBar />
+
                 <div className='mobilesidebar'>
-                     <FormGroup className='checkboxes' >
-                        <Checkbox inline className='check' >Witness</Checkbox> 
-                        <Checkbox inline className='check' >Encouragement</Checkbox>
-                        <Checkbox inline className='check' >Kindness</Checkbox>
-                    </FormGroup>
-                    </div>
+                    {/* <CheckboxGroup /> */}
+                </div>
 
 
                 
@@ -43,16 +60,17 @@ import '../css/userdash.css';
                     </div>
 
                     <div className='sidebar'>
-                     <FormGroup className='checkboxes' >
-                        <Checkbox className='check' >Witness</Checkbox> 
-                        <Checkbox className='check' >Encouragement</Checkbox>
-                        <Checkbox className='check' >Kindness</Checkbox>
-                    </FormGroup>
+                            <FormGroup className='checkboxes' >
+                        <Checkbox value='witness' onClick={ (e) => this.handleTypeFilter(e)} className='check' name='filterButtonGroup' >Witness</Checkbox> 
+                        <Checkbox value='Encouragement' onClick={ (e) => this.handleTypeFilter(e)} className='check'name='filterButtonGroup' >Encouragement</Checkbox>
+                        <Checkbox value='Kindness'  onClick={ (e) => this.handleTypeFilter(e)} className='check' name='filterButtonGroup' >Kindness</Checkbox>
+                             </FormGroup>
                     </div>
 
                     <div className='main'>
                         
-                     <ActList className='listdiv' userlist={this.props.userlist.userlist}/>
+                        <ActList  showFiltertedActs={this.props.showFiltertedActs}/>
+
    
                     </div>
 
@@ -64,7 +82,7 @@ import '../css/userdash.css';
 
 
 function mapDispatchToProps (dispatch) {
-    return bindActionCreators({getUserPoints, getActList}, dispatch)
+    return bindActionCreators({getUserPoints, getActList, addFilterType, removeFilterType }, dispatch)
 } 
 
 
@@ -72,7 +90,9 @@ const mapStatetoProps = state => {
     return {
         auth: state.auth,
         userpoints: state.userdash,
-        userlist: state.userlist
+        userlist: state.userlist,
+        filters: state.filters,
+        
     }
 }
 

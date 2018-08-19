@@ -5,7 +5,8 @@ import { appReducer } from './appReducer';
 import { actReducer } from './actReducer';
 import { userdashReducer } from './userdashReducer';
 import { userListReducer } from './userlistReducer';
-import { churchListReducer } from './churchlistReducer'
+import { churchListReducer } from './churchlistReducer';
+import { visibilityReducer } from './visibilityReducer'
 
 const rootReducer = combineReducers({
     loginReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     act: actReducer,
     userdash: userdashReducer,
     userlist: userListReducer,
-    churchlist: churchListReducer
+    churchlist: churchListReducer,
+    visableFilter: visibilityReducer
 })
 
 export default rootReducer;
