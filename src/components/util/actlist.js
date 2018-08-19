@@ -18,12 +18,6 @@ class Actlist extends Component {
                             )
                         })
 
-
-                        // filteredData.map( (item) => {
-                        //     return (
-                        //         <ListGroupItem key={item.actsid}>{item.description}</ListGroupItem>
-                        //     )
-                        // })
                  }
                     
                 </ListGroup>

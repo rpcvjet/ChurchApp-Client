@@ -34,6 +34,28 @@ import '../css/userdash.css';
 
     }
 
+    handleKindnessFilter =(event) => {
+        let kindness = event.target.value
+        if(event.target.checked) {
+            this.props.addFilterType(kindness)
+        }
+        else {
+            this.props.removeFilterType(kindness)
+        }
+  
+      }
+
+    handleEncouragementFilter =(event) => {
+        let encouragement = event.target.value
+        if(event.target.checked) {
+            this.props.addFilterType(encouragement)
+        }
+        else {
+            this.props.removeFilterType(encouragement)
+        }
+  
+      }
+
    
   render() {
       
@@ -46,7 +68,11 @@ import '../css/userdash.css';
                 <NavBar />
 
                 <div className='mobilesidebar'>
-                    {/* <CheckboxGroup /> */}
+                <FormGroup className='checkboxes' >
+                                <Checkbox inline value='Witness' onClick={ (e) => this.handleTypeFilter(e)} className='check' name='filterButtonGroup' >Witness</Checkbox> 
+                                <Checkbox inline value='Kindness'  onClick={ (e) => this.handleKindnessFilter(e)} className='check' name='filterButtonGroup' >Kindness</Checkbox>
+                                <Checkbox inline value='Encouragement' onClick={ (e) => this.handleEncouragementFilter(e)} className='check'name='filterButtonGroup' >Encouragement</Checkbox>
+                             </FormGroup>
                 </div>
 
 
@@ -61,9 +87,9 @@ import '../css/userdash.css';
 
                     <div className='sidebar'>
                             <FormGroup className='checkboxes' >
-                        <Checkbox value='witness' onClick={ (e) => this.handleTypeFilter(e)} className='check' name='filterButtonGroup' >Witness</Checkbox> 
-                        <Checkbox value='Encouragement' onClick={ (e) => this.handleTypeFilter(e)} className='check'name='filterButtonGroup' >Encouragement</Checkbox>
-                        <Checkbox value='Kindness'  onClick={ (e) => this.handleTypeFilter(e)} className='check' name='filterButtonGroup' >Kindness</Checkbox>
+                                <Checkbox value='Witness' onClick={ (e) => this.handleTypeFilter(e)} className='check' name='filterButtonGroup' >Witness</Checkbox> 
+                                <Checkbox value='Kindness'  onClick={ (e) => this.handleKindnessFilter(e)} className='check' name='filterButtonGroup' >Kindness</Checkbox>
+                                <Checkbox value='Encouragement' onClick={ (e) => this.handleEncouragementFilter(e)} className='check'name='filterButtonGroup' >Encouragement</Checkbox>
                              </FormGroup>
                     </div>
 
