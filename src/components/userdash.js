@@ -3,7 +3,6 @@ import ActList from '../components/util/actlist'
 import NavBar from '../components/util/navbar'
 import { bindActionCreators } from 'redux';
 import { getUserPoints, getActList, addFilterType, removeFilterType } from '../redux/actions/userdashActions';
-// import  CheckboxGroup  from '../components/util/checkboxs';
 import {FormGroup, Checkbox} from 'react-bootstrap';
 
 import { connect } from 'react-redux';

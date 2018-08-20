@@ -8,23 +8,20 @@ const getVisibleActs = (acts, filter) => {
     console.log('filter' , filter)
     //show all acts
     if(filter.typeFilter.length === 0) {
-        console.log('im here')
         return acts.userlist;
     }
     //show only witness
     else if (filter.typeFilter.length !== 0) {
 
-        let witnessArray = []
+        let filteredArray = []
 
         acts.userlist.forEach( w => {
             console.log('w', w)
             if(filter.typeFilter.indexOf(w.typeofact) !== -1){
-                witnessArray.push(w)
+                filteredArray.push(w)
             }
         })
-        console.log('witnessArray', witnessArray)
-
-        return witnessArray
+        return filteredArray
     } 
     
    

@@ -1,11 +1,13 @@
 import React, { Component , Fragment} from 'react';
 import {FormControl, FormGroup, Radio, Button, Modal} from 'react-bootstrap';
-import NavBar from '../components/util/navbar'
+import NavBar from '../components/util/navbar';
+import Alert from '../components/util/alert';
 import {sendActToDB} from '../redux/actions/actActions';
 import { connect } from 'react-redux';
 
 import '../css/addact.css';
 import { bindActionCreators } from 'redux';
+import { setTimeout } from 'timers';
 
 
 class AddAct extends Component {
@@ -16,7 +18,9 @@ class AddAct extends Component {
     this.state = {
       text:'',
       actType:'',
-      show: false
+      show: false,
+      charsleft: 100,
+      showAlert: false
     };
     this.handleHide = this.handleHide.bind(this);
   }
@@ -33,14 +37,16 @@ class AddAct extends Component {
 
 
   handleTextChange = (event) => {
+    let input = event.target.value
     this.setState({text: event.target.value})
+    this.setState({ charsleft: 100 - input.length})
   }
 
   handleHide() {
     this.setState({ show: false });
   }
 
-  handleSubmit = () => {      
+  handleSubmit = () => {   
      const actdata = {
       description: this.state.text,
       typeofact: this.state.actType,
@@ -50,14 +56,45 @@ class AddAct extends Component {
      this.props.sendActToDB(actdata)
      this.handleHide();
      this.setState({text:'', actType:''})
-     
+     this.setState({showAlert: true})
+  }
+
+  getValidationState = () => {
+    const textlength = this.state.text.length;
+    if(textlength >= 100)  return 'error';
+    else if (textlength >= 15) return 'success';
+    return null
+  }
+
+  showAlert = () => {
+    if(!this.state.showAlert) {
+        return <div></div>
+      }
+    
+    else {
+      
+      return(
+      <div className='alertdiv'>
+      <Alert />    
+      </div>
+      )    
+      
+    }
   }
 
   render() {
+    console.log('this.state',this.state)
+    
+
+    const { text, actType} = this.state;
+    const isEnabled = text.length > 15 && actType.length > 0;
+
+
     return (  
       <Fragment>
 
         <NavBar />
+            {this.showAlert()}
               
             <form >
                 <h1 className='message1 words'> I commited an act of... </h1>
@@ -68,24 +105,26 @@ class AddAct extends Component {
                     <Radio inline value="Encouragement" onChange={this.handleTypeChange}  name='radioButtonGroup'>Encouragement</Radio>
                   </FormGroup>
 
-                {/* <h2 className='message2 words'>on</h2>
-                        
-                <div className="datepicker"  >
-                  <input type="date" value={this.state.selectedDate}/>
-                </div> */}
-
                 <h2 className='message3 words'>by</h2>       
              
                 <div >
-                  <FormControl className='explainarea' bsSize="large" componentClass="textarea" placeholder="Explain you act..." 
-                    value={this.state.text}
-                    onChange={this.handleTextChange}             
+                <FormGroup controlId="formBasicText" validationState={this.getValidationState()}>
+                  <FormControl 
+                  maxLength="100"
+                  className='explainarea' 
+                  bsSize="large" componentClass="textarea" 
+                  placeholder="Explain you act in 100 charcters or less..." 
+                  value={this.state.text}
+                  onChange={this.handleTextChange}  
+                             
                   /> 
-                      
+                  <p>{this.state.charsleft} /100</p>
+                 </FormGroup>     
               </div>
               
                     <div className="modal-container" style={{ height: 200 }}>
           <Button
+            disabled = {!isEnabled}
             className='submitbutton'
             bsStyle="primary"
             bsSize="large"
@@ -103,7 +142,8 @@ class AddAct extends Component {
             <Modal.Header closeButton>
             </Modal.Header>
             <Modal.Body>
-              Are you sure you want to submit?
+              Are you sure you want to submit? <br />
+              You act will be shared with the entire church.
             </Modal.Body>
             <Modal.Footer>
               <Button type="button" onClick={this.handleSubmit}>Submit</Button>

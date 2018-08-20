@@ -15,7 +15,6 @@ export function sendActToDB(actdata) {
 }
 
 export function sendActToDBSuccess(actdata) {
-    console.log('actdata!!!!!!!',actdata)
     return{
         type:POST_ACT_SUCCESS,
         payload: actdata
