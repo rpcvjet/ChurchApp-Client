@@ -56,10 +56,7 @@ import '../css/userdash.css';
       }
 
    
-  render() {
-      
-    console.log('this.props in userdash', this.props)
-    
+  render() {    
     
     return (
                 <Fragment>

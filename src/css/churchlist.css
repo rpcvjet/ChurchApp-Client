@@ -11,8 +11,8 @@
     font-size: 2.5em;
     line-height: 40px;
     font-style: italic;
-    /* animation-name: shift;
-    animation-duration: 3s; */
+     animation-name: shift;
+    animation-duration: 3s;
 }
 
 .person {
@@ -20,7 +20,7 @@
     margin-left: 55%;
     animation-name: nameappear;
     /* animation-delay: 4s; */
-    animation-duration: 5s;
+    /* animation-duration: 5s; */
 }
 
 @keyframes shift {

@@ -1,7 +1,9 @@
 import { GET_ALL_POINTS_REQUEST, GET_ALL_POINTS_SUCCESS, GET_ALL_POINTS_FAILURE } from '../actions/constants';
 
 
-const initialState = {}
+const initialState = {
+    points: []
+}
 
 export function appReducer  (state = initialState, action) {
 
@@ -12,7 +14,7 @@ export function appReducer  (state = initialState, action) {
 
         case GET_ALL_POINTS_SUCCESS:
             return   {
-                points: action.payload.data.data[0].count
+                points: [action.payload.data.data[0].count]
             }
             
 

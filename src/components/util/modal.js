@@ -17,7 +17,7 @@ class ActModal extends Component {
       this.setState({ show: false });
     }
     render() {
-      console.log('props in modal', this.props)
+
       return (
         <div className="modal-container" style={{ height: 200 }}>
           <Button

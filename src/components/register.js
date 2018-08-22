@@ -50,16 +50,8 @@ class Register extends Component {
         this.props.registerUser(user, this.props.history);
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if(nextProps.errors) {
-    //         this.setState({
-    //             errors: nextProps.errors
-    //         });
-    //     }
-    // }
 
     render() {
-        console.log(this.props)
         const {fullname, email, accesspassword, confirmpassword} = this.state;
         const isEnabled = fullname.length > 3 && email.length > 0 && accesspassword === 
         confirmpassword;

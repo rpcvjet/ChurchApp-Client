@@ -7,7 +7,6 @@ export function churchListReducer (state = inititalState, action){
     switch(action.type){
 
         case GET_ALLACTS_SUCCESS:
-        // console.log(action.payload.data.data)
         return {
             churchlist: action.payload.data.data
         }
