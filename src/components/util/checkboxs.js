@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import {FormGroup, Checkbox} from 'react-bootstrap';
 
 class CheckboxGroup extends Component {
-
     
-
     render(){
-        console.log('this.props checkboxex component', this.props)
         return(
 
             <FormGroup className='checkboxes' >

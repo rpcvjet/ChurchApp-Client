@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import BarChart from './util/chart';
+import Chart from './util/chart';
 import ChurchList from './util/churchlist'
 import NavBar from '../components/util/navbar';
 import { connect } from 'react-redux';
@@ -12,35 +12,18 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            chartData: {},
         }
     
     }
     
-    componentWillMount() {
+    componentDidMount() {
         
         this.props.getAllPoints();
-        this.props.getAllActs();
-        this.setState({
-            chartData : {
-                labels: ['Acts'],
-                datasets: [
-                    {
-                        label: 'Number of Acts',
-                        backgroundColor: 'rgba(255,99,132,0.2)',
-                        borderColor: 'rgba(255,99,132,1)',
-                        borderWidth: 2,
-                        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-                        hoverBorderColor: 'rgba(255,99,132,1)',
-                        data:[20]
-                    }
-                 ]
-                }
-            })   
+        this.props.getAllActs();      
         }
 
     render() {
-        // console.log(this.props)
+        // console.log('this.props in app',this.props)
         return(
             <Fragment>
             <NavBar/>
@@ -53,7 +36,7 @@ class App extends Component {
                
                 <div className='data'>
                     <div className='d3'>
-                    <BarChart chartData={this.state.chartData} />
+                    <Chart chartData={this.props.points} />
                     </div>
                 
                 </div>

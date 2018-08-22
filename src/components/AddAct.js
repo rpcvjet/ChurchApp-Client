@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 import '../css/addact.css';
 import { bindActionCreators } from 'redux';
-import { setTimeout } from 'timers';
 
 
 class AddAct extends Component {
@@ -82,9 +81,7 @@ class AddAct extends Component {
     }
   }
 
-  render() {
-    console.log('this.state',this.state)
-    
+  render() {    
 
     const { text, actType} = this.state;
     const isEnabled = text.length > 15 && actType.length > 0;

@@ -57,7 +57,6 @@ export function getActFailure(err) {
 }
 
 export function addFilterType(filterType) {
-    console.log('filterType!!!', filterType)
         return {
        type: ADD_TYPE_FILTER,
        filterType

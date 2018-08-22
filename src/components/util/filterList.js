@@ -4,8 +4,7 @@ import UserDash from '../userdash';
 
 
 const getVisibleActs = (acts, filter) => {
-    console.log('acts' , acts)
-    console.log('filter' , filter)
+  
     //show all acts
     if(filter.typeFilter.length === 0) {
         return acts.userlist;
@@ -16,7 +15,7 @@ const getVisibleActs = (acts, filter) => {
         let filteredArray = []
 
         acts.userlist.forEach( w => {
-            console.log('w', w)
+
             if(filter.typeFilter.indexOf(w.typeofact) !== -1){
                 filteredArray.push(w)
             }
@@ -30,8 +29,6 @@ const getVisibleActs = (acts, filter) => {
 
 export class VisableActList extends Component {
     render() {
-        console.log('this.props visable act list', this.props)
-
         let showFiltertedActs = getVisibleActs(this.props.userlist, this.props.visableFilter)
 
         return (

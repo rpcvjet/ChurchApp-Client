@@ -6,8 +6,6 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap'
 class Actlist extends Component {
     render() {
 
-        console.log('this.props in actlist', this.props.showFiltertedActs)
-
         return(
             <div className='thelist'>
                  <ListGroup className='actlist'>
