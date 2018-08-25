@@ -12,7 +12,7 @@ class Actlist extends Component {
                  {
                             this.props.showFiltertedActs && this.props.showFiltertedActs.map( list => {
                             return (
-                                <ListGroupItem href="#" key={list.actsid}>{list.description}</ListGroupItem>
+                                <ListGroupItem href="#" key={list._id}>{list.description}</ListGroupItem>
                             )
                         })
 

@@ -14,7 +14,7 @@ export function appReducer  (state = initialState, action) {
 
         case GET_ALL_POINTS_SUCCESS:
             return   {
-                points: [action.payload.data.data[0].count]
+                points: [action.payload.data]
             }
             
 

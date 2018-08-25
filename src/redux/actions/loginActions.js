@@ -6,11 +6,11 @@ import axios from 'axios';
 const baseUrl = 'http://localhost:4000/api';
 
 export const registerUser = (user, history) => dispatch => {
-
-    axios.post(`${baseUrl}/users/signup`,user)
+    console.log('user', user)
+    axios.post(`${baseUrl}/signup`,user)
     .then(res => history.push('/login'))
     .catch('register error', err => {
-        console.log('register err',err)
+        console.log('register err',err.response)
         dispatch({
             type: REGISTER_ERROR,
             payload: err
@@ -25,7 +25,8 @@ export function loginUser(userInfo) {
         const url = 'http://localhost:4000/api/login';
         return axios.post(url, userInfo).then( (res) => {
             const token  = res.data.token;
-            const user = res.data.payload.user;
+            console.log('res',res)
+            const user = res.data.user;
 
             localStorage.setItem('jwtToken', token);
             localStorage.setItem('user', JSON.stringify(user));

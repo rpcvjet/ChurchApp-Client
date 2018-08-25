@@ -49,12 +49,13 @@ class AddAct extends Component {
      const actdata = {
       description: this.state.text,
       typeofact: this.state.actType,
-      userid: this.props.auth.user.user.userid
+      userid: this.props.auth.user._id
      }
      //send to database now
      this.props.sendActToDB(actdata)
      this.handleHide();
-     this.setState({text:'', actType:''})
+     this.setState({text:''})
+     this.setState({actType:''})
      this.setState({showAlert: true})
   }
 
@@ -85,7 +86,7 @@ class AddAct extends Component {
 
     const { text, actType} = this.state;
     const isEnabled = text.length > 15 && actType.length > 0;
-
+    // console.log('this.props act page', this.props)
 
     return (  
       <Fragment>

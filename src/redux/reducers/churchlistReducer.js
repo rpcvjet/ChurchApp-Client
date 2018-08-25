@@ -8,7 +8,7 @@ export function churchListReducer (state = inititalState, action){
 
         case GET_ALLACTS_SUCCESS:
         return {
-            churchlist: action.payload.data.data
+            churchlist: action.payload.data
         }
         
         case GET_ALLACTS_FAILURE:

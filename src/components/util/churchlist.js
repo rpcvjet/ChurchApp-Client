@@ -11,13 +11,15 @@ class ChurchList extends Component {
 
     
     componentWillReceiveProps(props) {
-        let newarray = props.allacts && props.allacts.map( word => {
-            return {
-                text: word.description,
-                name: word.fullname
-            }
+        console.log('this.props in churchlist', props)
+
+        let newarray = props.allacts && props.allacts.map( randomuser => {
+            return randomuser;
+            })
             
-        })
+        
+            
+        console.log('newarry',newarray)
         this.setState({ acts: newarray })
 
 
@@ -34,21 +36,24 @@ class ChurchList extends Component {
         }, 5000);
     }
 
-    // getLatestQuote = () => {
-    //     let word = this.state.acts
-    //     console.log('word', word)
-    //     this.setState({text: word.text});
-    //     this.setState({name: word.name});
-    // }
     
     randomQuote = () => {
-        let word = this.state.acts[Math.floor(Math.random() * this.state.acts.length)];
-        this.setState({text: word.text});
-        this.setState({name: word.name});
+        let user = this.state.acts[Math.floor(Math.random() * this.state.acts.length)];
+        
+        let wordsArray = [];
+
+         user.useracts.map( words => {
+                wordsArray.push(words.description)
+                return words
+        });
+        let screenword = wordsArray[Math.floor(Math.random() * wordsArray.length)]
+              
+        this.setState({text: screenword});
+        this.setState({name: user.fullname});
     }
     
     render() {
-     
+        console.log('this.state', this.state)
         return(
             <div className='quote-wrapper'>
            
