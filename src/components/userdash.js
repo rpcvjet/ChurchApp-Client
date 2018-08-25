@@ -11,9 +11,10 @@ import '../css/userdash.css';
 
  class UserDash extends Component {
   
-    componentWillMount(){
-        this.props.getUserPoints(this.props.auth.user.user.userid);
-        this.props.getActList(this.props.auth.user.user.userid);
+    componentDidMount(){
+
+        this.props.getUserPoints(this.props.auth.user._id);
+        this.props.getActList(this.props.auth.user._id);
     }
 
     componentWillReceiveProps(props) {
@@ -57,7 +58,6 @@ import '../css/userdash.css';
 
    
   render() {    
-    
     return (
                 <Fragment>
                 
@@ -76,8 +76,8 @@ import '../css/userdash.css';
                 <div className='wrapper'>
                     <div className='header'> 
                         
-                        <h1 className='desktopMessage'>{this.props.auth.user.user.fullname}, you've commited {this.props.userpoints.userpoints} Acts!</h1>
-                        <h1 className='mobileMessage'>Acts: {this.props.userpoints.userpoints}</h1>
+                        <h1 className='desktopMessage'>{this.props.auth.user.fullname}, you've commited {this.props.userpoints.userpoints} Acts!</h1>
+                        <h1 className='mobileMessage'>Acts: {this.props.userpoints.data}</h1>
                       
                     </div>
 

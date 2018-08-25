@@ -14,7 +14,7 @@ class Login extends Component {
 
         this.state = {
             email: '',
-            accesspassword: '',
+            password: '',
             submitted: false,
             errors: {}
     }
@@ -25,7 +25,7 @@ handleChange = event => {
 }
 
 handlePasswordChange = event => {
-    this.setState({accesspassword: event.target.value})
+    this.setState({password: event.target.value})
 }
 
 handleSubmit = event => {
@@ -33,7 +33,7 @@ handleSubmit = event => {
     
     const user = {
         email: this.state.email,
-        accesspassword: this.state.accesspassword
+        password: this.state.password
     }
     this.props.loginUser(user);
     
@@ -58,8 +58,8 @@ componentWillReceiveProps(nextProps) {
 
  render() {
     // setting up input validation
-    const { email, accesspassword} = this.state;
-    const isEnabled = email.length > 0 && accesspassword.length > 0;
+    const { email, password} = this.state;
+    const isEnabled = email.length > 0 && password.length > 0;
 
      return(
        

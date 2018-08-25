@@ -14,7 +14,7 @@ class Register extends Component {
     state = {
         fullname: '',
         email: '',
-        accesspassword: '',
+        password: '',
         confirmpassword:''
     }
 
@@ -31,7 +31,7 @@ class Register extends Component {
 
     handlePasswordChange = (event) => {
 
-        this.setState({accesspassword: event.target.value})
+        this.setState({password: event.target.value})
     }
 
     handleConfirmChange = (event) => {
@@ -44,7 +44,7 @@ class Register extends Component {
         const user = {
             fullname: this.state.fullname,
             email: this.state.email,
-            accesspassword: this.state.accesspassword
+            password: this.state.password
             
         }
         this.props.registerUser(user, this.props.history);
@@ -52,8 +52,8 @@ class Register extends Component {
 
 
     render() {
-        const {fullname, email, accesspassword, confirmpassword} = this.state;
-        const isEnabled = fullname.length > 3 && email.length > 0 && accesspassword === 
+        const {fullname, email, password, confirmpassword} = this.state;
+        const isEnabled = fullname.length > 3 && email.length > 0 && password === 
         confirmpassword;
 
         return(
