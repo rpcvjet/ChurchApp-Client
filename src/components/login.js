@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react'
-import PropTypes from 'prop-types';
-
+import {FormControl, FormGroup, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {loginUser} from '../redux/actions/loginActions';
 import {connect} from 'react-redux'
 import '../css/login.css'
 
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 class Login extends Component {
-    constructor(props) {
-        super(props);
+  
 
-        this.state = {
+         state = {
             email: '',
             password: '',
             submitted: false,
             errors: {}
     }
-}
+
 
 handleChange = event => {
     this.setState({email: event.target.value})
@@ -29,6 +28,7 @@ handlePasswordChange = event => {
 }
 
 handleSubmit = event => {
+    event.preventDefault();
     this.setState({submitted: true})
     
     const user = {
@@ -49,16 +49,18 @@ componentWillReceiveProps(nextProps) {
     if(nextProps.auth.isAuthenticated) {
         this.props.history.push('/')
     }
-    // if(nextProps.errors) {
-    //     this.setState({
-    //         errors: nextProps.errors
-    //     });
-    // }
+    if(nextProps.errors) {
+        this.setState({
+            errors: nextProps.errors
+        });
+    }
 }
 
  render() {
+     console.log('state', this.state.errors)
+     console.log('this.props', this.props)
     // setting up input validation
-    const { email, password} = this.state;
+    const { email, password, errors} = this.state;
     const isEnabled = email.length > 0 && password.length > 0;
 
      return(
@@ -66,35 +68,39 @@ componentWillReceiveProps(nextProps) {
         <div className='loginwrapper'>
     
         
-            <Form size='large' className='loginform' onSubmit={this.handleSubmit}>
+            <form size='large' className='loginform' onSubmit={this.handleSubmit}>
                 
                 <h1>ChurchApp</h1>
 
-                <Form.Field>
+                <FormGroup>
                 <label>Email</label>
-                <Form.Input 
-                    fluid icon='user'
-                    iconPosition='left' 
+                <FormControl 
                     placeholder='email' 
                     type='email'
                     onChange={this.handleChange}
                     value={this.state.email}  
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors.email
+                    })}
                 />
-                </Form.Field>
+                {errors.email && (<div className="invalid-feedback alert-danger">{errors.email}</div>)}
+                </FormGroup>
                 
-                <Form.Field>
+                <FormGroup>
                 <label>Password</label>
-                <Form.Input placeholder='password'
-                    iconPosition='left' 
+                <FormControl placeholder='password'
                     type='password'
-                    fluid icon='lock'
                     onChange={this.handlePasswordChange}
                     value={this.state.password}
+                    className={classnames('form-control form-control-lg', {
+                        'is-invalid': errors.password
+                    })} 
                 />
-                </Form.Field>
+                {errors.password && (<div className="invalid-feedback alert-danger">{errors.password}</div>)}
+                </FormGroup>
 
                 <div className='loginbutton'>
-                <Form.Button disabled = {!isEnabled} color='green' type='submit' >Login</Form.Button>
+                <Button disabled = {!isEnabled} bsStyle='success' type='submit' >Login</Button>
                 </div>
 
                 <div className='link'>
@@ -103,7 +109,7 @@ componentWillReceiveProps(nextProps) {
 
                 </Link>
                 </div>
-            </Form>
+            </form>
         </div>
      )
  }
@@ -114,13 +120,14 @@ componentWillReceiveProps(nextProps) {
 Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    // errors: PropTypes.object.isRequired
+    errors: PropTypes.object.isRequired
 }
 
-function mapStateToProps (state) {
+const mapStateToProps = state => {
         return { 
-                 user: state, 
-                 auth: state.auth
+            user: state, 
+            auth: state.auth,
+            errors: state.errors,
             }
 }
 

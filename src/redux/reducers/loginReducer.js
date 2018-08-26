@@ -7,7 +7,7 @@ export function loginReducer  (state = initialState, action) {
 
     switch(action.type) {
         case LOGIN_ERROR:
-            return action.payload;
+            return action.payload.response.data;
 
         case REGISTER_ERROR:
             return action.payload;
