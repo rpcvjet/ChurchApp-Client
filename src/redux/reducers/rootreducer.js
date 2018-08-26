@@ -9,7 +9,7 @@ import { churchListReducer } from './churchlistReducer';
 import { visibilityReducer } from './visibilityReducer'
 
 const rootReducer = combineReducers({
-    loginReducer,
+    errors: loginReducer,
     auth :authReducer,
     app: appReducer,
     act: actReducer,

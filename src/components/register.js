@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import {FormControl, FormGroup, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import { connect} from 'react-redux';
 import { registerUser } from '.././redux/actions/loginActions'
 import { withRouter } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+
 
 
 import '../css/register.css'
@@ -15,7 +18,8 @@ class Register extends Component {
         fullname: '',
         email: '',
         password: '',
-        confirmpassword:''
+        password_confirm:'',
+        errors: {}
     }
 
 
@@ -36,7 +40,7 @@ class Register extends Component {
 
     handleConfirmChange = (event) => {
 
-        this.setState({confirmpassword: event.target.value})
+        this.setState({password_confirm: event.target.value})
     }
 
     handleSubmit = e => {
@@ -44,78 +48,91 @@ class Register extends Component {
         const user = {
             fullname: this.state.fullname,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            password_confirm: this.state.password
             
         }
         this.props.registerUser(user, this.props.history);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+    }
+
 
     render() {
-        const {fullname, email, password, confirmpassword} = this.state;
+        console.log('this.props register', this.props)
+        const {fullname, email, password, password_confirm, errors } = this.state;
         const isEnabled = fullname.length > 3 && email.length > 0 && password === 
-        confirmpassword;
+        password_confirm;
 
         return(
        <div className="register-wrapper">
      
-                <Form size='large' className="registerForm" onSubmit={this.handleSubmit }>
-                    <Form.Field>
+                <form size='large' className="registerForm" onSubmit={this.handleSubmit }>
+                    <FormGroup>
                     <label>Enter Full Name</label>
 
-                        <Form.Input
-                        fluid
-                        icon='user'
-                        iconPosition='left'
+                        <FormControl
                         placeholder='John Doe'
                         type='fullname'
                         onChange={this.handleFullnameChange}
                         value={this.state.fullname}
+                        className={classnames('form-control form-control-lg', {'is-invalid': errors.fullname})}
+                      
                         />
-                    </Form.Field>
+                        {errors.name && (<div className="invalid-feedback alert-danger">{errors.fullname}</div>)}
+                    </FormGroup>
 
-                      <Form.Field>
+                      <FormGroup>
                     <label>Enter Email Address</label>
 
-                        <Form.Input
-                        fluid
-                        icon='mail'
-                        iconPosition='left'
+                        <FormControl
                         placeholder='user@myemail.com'
                         type='email'
-                        name="accessemail"
+                        name="email"
                         onChange={this.handleEmailChange}
                         value={this.state.email}
+                        className={classnames('form-control form-control-lg  ', {'is-invalid': errors.email})}
                         />
-                    </Form.Field>
+                        {errors.email && (<div className="invalid-feedback alert-danger">{errors.email}</div>)}
+                    </FormGroup>
 
-                    <Form.Field>
+                    <FormGroup>
                     <label>Password</label>
-                    <Form.Input placeholder='password'
-                        iconPosition='left' 
-                        fluid icon='lock'
-                        name='password'
+                    <FormControl placeholder='password'
+                        name='password_confirm'
                         value={this.state.password}
                         onChange={this.handlePasswordChange}
                         type='password'
+                        className={classnames('form-control form-control-lg', {
+                            'is-invalid': errors.password
+                        })}
                 
                         />
-                    </Form.Field>
+                        {errors.password && (<div className="invalid-feedback alert-danger">{errors.password}</div>)}
+                    </FormGroup>
 
-                     <Form.Field>
+                     <FormGroup>
                     <label>Confirm Password</label>
-                    <Form.Input placeholder='password'
-                        iconPosition='left' 
-                        fluid icon='lock'
+                    <FormControl placeholder='password'
                         type='password'
-                        name='confirmpassword'
+                        name='password_confirm'
                         onChange={this.handleConfirmChange}
-                        value={this.state.confirmpassword}
+                        value={this.state.password_confirm}
+                        className={classnames('form-control form-control-lg', {
+                            'is-invalid': errors.password_confirm
+                        })}
                         />
-                    </Form.Field>
+                        {errors.password_confirm && (<div className="invalid-feedback alert-danger">{errors.password_confirm}</div>)}
+                    </FormGroup>
 
                      <div className='regbutton'>
-                    <Button disabled={!isEnabled} color='green' type='submit'>Register</Button>
+                    <Button disabled={!isEnabled} bsStyle='success' type='submit'>Register</Button>
                     </div>  
 
                      <div className='rglink'>
@@ -124,20 +141,20 @@ class Register extends Component {
                                  Login Here.</p> 
                         </Link>
                     </div>
-                </Form>   
+                </form>   
         </div>
 
         )
     }
 }
 
-// Register.propTypes = {
-//     registerUser: PropTypes.func.isRequired,
-// };
+Register.propTypes = {
+    registerUser: PropTypes.func.isRequired,
+};
 
-// function mapStateToProps (state) {
-//     auth: state.auth
-// };
+const mapStateToProps = state => ({
+    errors: state.errors
+});
 
 
-export default connect(null, {registerUser})(withRouter (Register));
+export default connect(mapStateToProps, {registerUser})(withRouter (Register));
