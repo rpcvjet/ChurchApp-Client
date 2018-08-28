@@ -65,7 +65,7 @@ class Register extends Component {
 
 
     render() {
-        console.log('this.props register', this.props)
+        // console.log('this.props register', this.props)
         const {fullname, email, password, password_confirm, errors } = this.state;
         const isEnabled = fullname.length > 3 && email.length > 0 && password === 
         password_confirm;

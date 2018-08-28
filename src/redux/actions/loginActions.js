@@ -6,16 +6,13 @@ import axios from 'axios';
 const baseUrl = 'http://localhost:4000/api';
 
 export const registerUser = (user, history) => dispatch => {
-    console.log('user', user)
     return axios.post(`${baseUrl}/signup`,user)
     .then( 
         (res) => { 
-        console.log('res',res)
         history.push('/login')
     })
 
     .catch(err => {
-        console.log('register err',err.response)
         dispatch({
             type: REGISTER_ERROR,
             payload: err.response.data
@@ -31,11 +28,10 @@ export function loginUser(userInfo) {
         return axios.post(url, userInfo).then( 
             (res) => {
             const token  = res.data.token;
-            console.log('res',res)
-            const user = res.data.user;
+            // const user = res.data.user;
 
             localStorage.setItem('jwtToken', token);
-            localStorage.setItem('user', JSON.stringify(user));
+            // localStorage.setItem('user', JSON.stringify(user));
            
             setAuthToken(token);
             const decoded = jwt_decode(token);
@@ -43,7 +39,7 @@ export function loginUser(userInfo) {
            
         })
         .catch(err => {
-            console.log('errrr', err)
+            // console.log('errrr', err)
             dispatch({              
                 type: LOGIN_ERROR,
                 payload: err

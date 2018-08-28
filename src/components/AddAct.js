@@ -2,6 +2,8 @@ import React, { Component , Fragment} from 'react';
 import {FormControl, FormGroup, Radio, Button, Modal} from 'react-bootstrap';
 import NavBar from '../components/util/navbar';
 import Alert from '../components/util/alert';
+import { Redirect } from 'react-router-dom';
+
 import {sendActToDB} from '../redux/actions/actActions';
 import { connect } from 'react-redux';
 
@@ -19,7 +21,7 @@ class AddAct extends Component {
       actType:'',
       show: false,
       charsleft: 100,
-      showAlert: false
+      showAlert: false,
     };
     this.handleHide = this.handleHide.bind(this);
   }
@@ -83,7 +85,9 @@ class AddAct extends Component {
   }
 
   render() {    
-
+    if(!this.props.auth.isAuthenticated){
+      return <Redirect to='/login' />
+  }
     const { text, actType} = this.state;
     const isEnabled = text.length > 15 && actType.length > 0;
     // console.log('this.props act page', this.props)

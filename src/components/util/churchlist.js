@@ -11,15 +11,14 @@ class ChurchList extends Component {
 
     
     componentWillReceiveProps(props) {
-        console.log('this.props in churchlist', props)
 
         let newarray = props.allacts && props.allacts.map( randomuser => {
             return randomuser;
+            }).filter( filteredlist => {
+                return filteredlist.acts.length > 0
             })
             
         
-            
-        console.log('newarry',newarray)
         this.setState({ acts: newarray })
 
 
@@ -53,7 +52,6 @@ class ChurchList extends Component {
     }
     
     render() {
-        console.log('this.state', this.state)
         return(
             <div className='quote-wrapper'>
            

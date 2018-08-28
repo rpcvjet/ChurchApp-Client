@@ -5,7 +5,7 @@ import AddAct from './components/AddAct';
 import Login from './components/login';
 import Register from './components/register'
 import Filter from './components/util/filterList';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route} from "react-router-dom";
 import {createStore, applyMiddleware, compose} from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';

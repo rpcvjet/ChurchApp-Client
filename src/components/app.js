@@ -3,26 +3,32 @@ import Chart from './util/chart';
 import ChurchList from './util/churchlist'
 import NavBar from '../components/util/navbar';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { getAllPoints, getAllActs } from '../redux/actions/appActions';
 import '../css/app.css';
 import { bindActionCreators } from 'redux';
 
 class App extends Component {
     
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
+            loggedin: this.props.auth.isAuthenticated
         }
     
     }
     
-    componentDidMount() {
-        
+
+    componentDidMount() {   
         this.props.getAllPoints();
         this.props.getAllActs();      
         }
 
+
     render() {
+        if(!this.props.auth.isAuthenticated){
+            return <Redirect to='/login' />
+        }
         // console.log('this.props in app',this.props)
         return(
             <Fragment>
@@ -60,7 +66,8 @@ function mapDispathToProps(dispatch) {
 const mapStateToProps  = state => {
     return {
         points: state.app,
-        churchlist: state.churchlist.churchlist
+        churchlist: state.churchlist.churchlist,
+        auth: state.auth
     }
 }
 
