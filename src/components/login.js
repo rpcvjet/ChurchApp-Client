@@ -19,102 +19,99 @@ class Login extends Component {
     }
 
 
-handleChange = event => {
-    this.setState({email: event.target.value})
-}
-
-handlePasswordChange = event => {
-    this.setState({password: event.target.value})
-}
-
-handleSubmit = event => {
-    event.preventDefault();
-    this.setState({submitted: true})
-    
-    const user = {
-        email: this.state.email,
-        password: this.state.password
+    handleChange = event => {
+        this.setState({email: event.target.value})
     }
-    this.props.loginUser(user);
-    
-}
 
-componentDidMount() {
-    if(this.props.auth.isAuthenticated) {
-        this.props.history.push('/');
+    handlePasswordChange = event => {
+        this.setState({password: event.target.value})
     }
-}
 
-componentWillReceiveProps(nextProps) {
-    if(nextProps.auth.isAuthenticated) {
-        this.props.history.push('/')
-    }
-    if(nextProps.errors) {
-        this.setState({
-            errors: nextProps.errors
-        });
-    }
-}
-
- render() {
-     console.log('state', this.state.errors)
-     console.log('this.props', this.props)
-    // setting up input validation
-    const { email, password, errors} = this.state;
-    const isEnabled = email.length > 0 && password.length > 0;
-
-     return(
-       
-        <div className='loginwrapper'>
-    
+    handleSubmit = event => {
+        event.preventDefault();
+        this.setState({submitted: true})
         
-            <form size='large' className='loginform' onSubmit={this.handleSubmit}>
-                
-                <h1>ChurchApp</h1>
+        const user = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        this.props.loginUser(user);
+        
+    }
 
-                <FormGroup>
-                <label>Email</label>
-                <FormControl 
-                    placeholder='email' 
-                    type='email'
-                    onChange={this.handleChange}
-                    value={this.state.email}  
-                    className={classnames('form-control form-control-lg', {
-                        'is-invalid': errors.email
-                    })}
-                />
-                {errors.email && (<div className="invalid-feedback alert-danger">{errors.email}</div>)}
-                </FormGroup>
-                
-                <FormGroup>
-                <label>Password</label>
-                <FormControl placeholder='password'
-                    type='password'
-                    onChange={this.handlePasswordChange}
-                    value={this.state.password}
-                    className={classnames('form-control form-control-lg', {
-                        'is-invalid': errors.password
-                    })} 
-                />
-                {errors.password && (<div className="invalid-feedback alert-danger">{errors.password}</div>)}
-                </FormGroup>
+    componentDidMount() {
+        if(this.props.auth.isAuthenticated) {
+            this.props.history.push('/');
+        }
+    }
 
-                <div className='loginbutton'>
-                <Button disabled = {!isEnabled} bsStyle='success' type='submit' >Login</Button>
-                </div>
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.auth.isAuthenticated) {
+            this.props.history.push('/')
+        }
+        if(nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+    }
 
-                <div className='link'>
-                <Link to ='/register'> 
-                <p>Not signed up? Click here to Register.</p>
+    render() {
 
-                </Link>
-                </div>
-            </form>
-        </div>
-     )
- }
+        // setting up input validation
+        const { email, password, errors} = this.state;
+        const isEnabled = email.length > 0 && password.length > 0;
 
+        return(
+        
+            <div className='loginwrapper'>
+        
+            
+                <form size='large' className='loginform' onSubmit={this.handleSubmit}>
+                    
+                    <h1>ChurchApp</h1>
 
+                    <FormGroup>
+                    <label>Email</label>
+                    <FormControl 
+                        placeholder='email' 
+                        type='email'
+                        onChange={this.handleChange}
+                        value={this.state.email}  
+                        className={classnames('form-control form-control-lg', {
+                            'is-invalid': errors.email
+                        })}
+                    />
+                    {errors.email && (<div className="invalid-feedback alert-danger">{errors.email}</div>)}
+                    </FormGroup>
+                    
+                    <FormGroup>
+                    <label>Password</label>
+                    <FormControl placeholder='password'
+                        type='password'
+                        onChange={this.handlePasswordChange}
+                        value={this.state.password}
+                        className={classnames('form-control form-control-lg', {
+                            'is-invalid': errors.password
+                        })} 
+                    />
+                    {errors.password && (<div className="invalid-feedback alert-danger">{errors.password}</div>)}
+                    </FormGroup>
+
+                    <div className='loginbutton'>
+                    <Button disabled = {!isEnabled} bsStyle='success' type='submit' >Login</Button>
+                    </div>
+
+                    <div className='link'>
+                    <Link to ='/register'> 
+                    <p>Not signed up? Click here to Register.</p>
+
+                    </Link>
+                    </div>
+                </form>
+            </div>
+        )
+    }
 }
 
 Login.propTypes = {

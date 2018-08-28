@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import ActList from '../components/util/actlist'
 import NavBar from '../components/util/navbar'
+import { Redirect } from 'react-router-dom';
+
 import { bindActionCreators } from 'redux';
 import { getUserPoints, getActList, addFilterType, removeFilterType } from '../redux/actions/userdashActions';
 import {FormGroup, Checkbox} from 'react-bootstrap';
@@ -10,7 +12,8 @@ import { connect } from 'react-redux';
 import '../css/userdash.css';
 
  class UserDash extends Component {
-  
+
+
     componentDidMount(){
 
         this.props.getUserPoints(this.props.auth.user._id);
@@ -58,6 +61,11 @@ import '../css/userdash.css';
 
    
   render() {    
+
+    if(!this.props.auth.isAuthenticated){
+        return <Redirect to='/login' />
+    }
+
     return (
                 <Fragment>
                 
