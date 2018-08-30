@@ -107,6 +107,11 @@ class Login extends Component {
                     <p>Not signed up? Click here to Register.</p>
 
                     </Link>
+
+                    <Link to ='/forgot'> 
+                    <p>Forgot password. Click here to reset</p>
+
+                    </Link>
                     </div>
                 </form>
             </div>

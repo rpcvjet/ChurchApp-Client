@@ -5,6 +5,8 @@ import AddAct from './components/AddAct';
 import Login from './components/login';
 import Register from './components/register'
 import Filter from './components/util/filterList';
+import Forgot from './components/forgot';
+import Reset from './components/reset';
 import { BrowserRouter, Switch, Route} from "react-router-dom";
 import {createStore, applyMiddleware, compose} from 'redux';
 import { Provider } from 'react-redux';
@@ -33,6 +35,8 @@ ReactDOM.render(
             <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
             <Route path='/userdash' component={Filter}/>
+            <Route path='/forgot' component={Forgot}/>
+            <Route path='/reset' component={Reset}/>
         </Switch>
     </BrowserRouter>
 </Provider>, document.getElementById('root'));

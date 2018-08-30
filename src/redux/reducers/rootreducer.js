@@ -7,6 +7,7 @@ import { userdashReducer } from './userdashReducer';
 import { userListReducer } from './userlistReducer';
 import { churchListReducer } from './churchlistReducer';
 import { visibilityReducer } from './visibilityReducer'
+import { forgotReducer } from './forgotReducer'
 
 const rootReducer = combineReducers({
     errors: loginReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     userdash: userdashReducer,
     userlist: userListReducer,
     churchlist: churchListReducer,
-    visableFilter: visibilityReducer
+    visableFilter: visibilityReducer,
+    forgot: forgotReducer
 })
 
 export default rootReducer;
