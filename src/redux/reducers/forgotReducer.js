@@ -1,5 +1,4 @@
 import { RESET_PASSWORD_SUCCESS, 
-         RESET_PASSWORD_FAILURE, 
          SET_NEW_PASSWORD_FAILURE, 
          SET_NEW_PASSWORD_SUCCESS
         } from '../actions/constants';
@@ -14,8 +13,7 @@ export function forgotReducer (state = initialState, action) {
         console.log('action.payload',action.payload)
         return action.payload
 
-        case RESET_PASSWORD_FAILURE:
-        return action.payload
+     
 
         case SET_NEW_PASSWORD_SUCCESS:
         console.log('action.payload reset password',action.payload)
