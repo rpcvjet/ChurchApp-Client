@@ -1,4 +1,7 @@
-import { RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAILURE, SET_NEW_PASSWORD_SUCCESS, SET_NEW_PASSWORD_FAILURE} from './constants'
+import { RESET_PASSWORD_SUCCESS, 
+        RESET_PASSWORD_FAILURE, 
+        SET_NEW_PASSWORD_SUCCESS, 
+        SET_NEW_PASSWORD_FAILURE} from './constants'
 import axios from  'axios';
 
 const baseUrl = 'http://localhost:4000/api';
@@ -21,10 +24,10 @@ export function resetPasswordSuccess(email) {
 }
 
 export function resetPasswordFailure (error) {
-
+            console.log('forgot action failure', error.response.data)
     return {
         type: RESET_PASSWORD_FAILURE,
-        payload: error
+        payload: error.response.data
     }
 }
 
@@ -50,7 +53,7 @@ export function setNewPasswordFailure(err) {
     console.log('errr in action', err)
     return {
         type: SET_NEW_PASSWORD_FAILURE,
-        payload: err
+        payload: err.response.data
     }
 }
 

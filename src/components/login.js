@@ -60,7 +60,7 @@ class Login extends Component {
 
         // setting up input validation
         const { email, password, errors} = this.state;
-        const isEnabled = email.length > 0 && password.length > 0;
+        // const isEnabled = email.length > 0 && password.length > 0;
 
         return(
         
@@ -78,9 +78,7 @@ class Login extends Component {
                         type='email'
                         onChange={this.handleChange}
                         value={this.state.email}  
-                        className={classnames('form-control form-control-lg', {
-                            'is-invalid': errors.email
-                        })}
+                        className={classnames('form-control form-control-lg', {'is-invalid': errors.email })}
                     />
                     {errors.email && (<div className="invalid-feedback alert-danger">{errors.email}</div>)}
                     </FormGroup>
@@ -91,15 +89,13 @@ class Login extends Component {
                         type='password'
                         onChange={this.handlePasswordChange}
                         value={this.state.password}
-                        className={classnames('form-control form-control-lg', {
-                            'is-invalid': errors.password
-                        })} 
+                        className={classnames('form-control form-control-lg', {'is-invalid': errors.password})} 
                     />
                     {errors.password && (<div className="invalid-feedback alert-danger">{errors.password}</div>)}
                     </FormGroup>
 
                     <div className='loginbutton'>
-                    <Button disabled = {!isEnabled} bsStyle='success' type='submit' >Login</Button>
+                    <Button  bsStyle='success' type='submit' >Login</Button>
                     </div>
 
                     <div className='link'>
