@@ -6,7 +6,6 @@ describe('When the login form mounts', () => {
 
         let login = shallow(<Login />)
         let container;
-        console.log(login.debug());
     it('it renders the Login Form', () => {
             expect(login.find('Form').exists()).toBe(true);
         })

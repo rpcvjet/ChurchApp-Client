@@ -58,9 +58,7 @@ class Forgot extends Component {
         }
     }
     render() {
-        console.log('props', this.props)
-        const { email, errors, forgot } = this.state;
-        console.log(this.state)
+        const { errors, forgot } = this.state;
 
         return(
             <Fragment>
@@ -80,7 +78,7 @@ class Forgot extends Component {
                             value={this.state.email}
                             className={classnames('form-control form-control-lg  ', {'is-invalid': errors.email, 'valid': forgot.email})}
                         />
-                        {errors.email && (<div className="invalid-feedback alert-danger">{errors.email}</div>)}
+                             {errors.email && (<div className="invalid-feedback alert-danger">{errors.email}</div>)}
                         
                     </FormGroup>
 

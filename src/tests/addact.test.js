@@ -4,8 +4,7 @@ import AddAct from '../components/AddAct';
 
 describe.only('when the app mounts', () => {
     let addact = shallow(<AddAct />)
-    console.log(addact.debug());
-
+=
     it('verifys date state to false', () => {
         expect(addact.state().date).toEqual(null);
     })
@@ -25,12 +24,6 @@ describe.only('when the app mounts', () => {
     it('renders the radio group  div', () => {
         expect(addact.find('FormGroup').hasClass('radioButtonGroup')).toEqual(true)
     })
-    // it('renders the Modal', () => {
-    //     expect(addact.find('Modal').exists()).toEqual(true)
-    // })
-    // it('renders the Form', () => {
-    //     expect(addact.find('Form').exists()).toEqual(true)
-    // })
 
     describe('TESTING STATE CHANGE', () => {
             let textarea = 'I did a great thing the other day'

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { POST_ACT_SUCCESS, POST_ACT_FAILURE } from './constants';
 const baseUrl = 'http://localhost:4000/api';
+// const baseUrl = 'https://api-churchapp.herokuapp.com/api';
+
 
 
 export function sendActToDB(actdata) {

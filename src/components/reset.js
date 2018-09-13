@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import {FormControl, FormGroup, Button} from 'react-bootstrap';
+import {FormControl, FormGroup, Button, HelpBlock} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
+
 import {connect} from 'react-redux'
-import '../css/login.css'
+import '../css/register.css'
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { setNewPassword } from '../redux/actions/forgotActions'
@@ -14,7 +16,9 @@ class Reset extends Component {
             password: '',
             confirm_password: '',
             submitted: false,
-            errors: {}
+            showAlert: false,
+            errors: {},
+            forgot: {}
     }
 
 
@@ -39,40 +43,63 @@ class Reset extends Component {
         
     }
 
-    // componentDidMount() {
-    //     if(this.props.auth.isAuthenticated) {
-    //         this.props.history.push('/');
-    //     }
-    // }
+    showAlert = () => {
+        if(this.state.showAlert) {
+            return <div>
+                  <Alert className="invalid-feedback alert-success">
+                     {this.state.forgot && (<div className=" alert-success">{this.state.forgot.message}</div>)}
+                  </Alert>
+            </div>
+          }       
+       
+      }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if(nextProps.auth.isAuthenticated) {
-    //         this.props.history.push('/')
-    //     }
-    //     if(nextProps.errors) {
-    //         this.setState({
-    //             errors: nextProps.errors
-    //         });
-    //     }
-    // }
+    getValidationState() {
+        const length = this.state.password.length;
+        if (length > 7) return 'success';
+        else if (length > 0) return 'error';
+        return null;
+      }
+
+      confirmGetValidationState() {
+        if (this.state.confirm_password.length > 0 && this.state.password === this.state.confirm_password) return 'success';           
+        else if(this.state.confirm_password.length > 0)  {return 'error'};
+        return null;
+      }
+
+
+    componentWillReceiveProps(nextProps) {
+       
+        if(nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+        if(nextProps.forgot) {
+            this.setState({forgot:nextProps.forgot})
+            this.setState({showAlert: true})
+            this.setState({errors: {}})
+        }
+    }
 
     render() {
-        console.log('this state', this.state)
-        console.log('this.props in reset', this.props)
-        // setting up input validation
-        const { email, password, errors} = this.state;
-        // const isEnabled = email.length > 0 && password.length > 0;
+      
+        const { password, confirm_password, errors, forgot } = this.state;
+        const isEnabled = password === confirm_password && password.length > 0 && confirm_password.length > 0;
 
         return(
         
             <div className='loginwrapper'>
-        
             
-                <form size='large' className='loginform' onSubmit={this.handleSubmit}>
+                <form size='large' className='registerForm' onSubmit={this.handleSubmit}>
+                    {this.showAlert()}
                     
                     <h1>Reset Password</h1>                  
                     
-                    <FormGroup>
+                    <FormGroup
+                    controlId="formBasicText"
+                    validationState={this.getValidationState()}
+                    >
                     <label>Password</label>
                     <FormControl placeholder='password'
                         type='password'
@@ -83,9 +110,14 @@ class Reset extends Component {
                         })} 
                     />
                     {errors.password && (<div className="invalid-feedback alert-danger">{errors.password}</div>)}
+                    <FormControl.Feedback />
+                    <HelpBlock>Password must be at least 8 characters.</HelpBlock>
                     </FormGroup>
 
-                      <FormGroup>
+                      <FormGroup
+                      controlId="formBasicText2"
+                      validationState={this.confirmGetValidationState()}
+                      >
                     <label>Confirm Password</label>
                     <FormControl placeholder='confirm password...'
                         type='password'
@@ -96,10 +128,18 @@ class Reset extends Component {
                         })} 
                     />
                     {errors.password && (<div className="invalid-feedback alert-danger">{errors.password}</div>)}
+                    <FormControl.Feedback />
+
                     </FormGroup>
 
                     <div className='loginbutton'>
-                    <Button bsStyle='primary' type='submit'>Reset</Button>
+                    <Button disabled={!isEnabled} bsStyle='primary' type='submit'>Reset</Button>
+                    </div>
+
+                    <div className='rglink'>
+                        <Link to ={'/login'} >
+                            <p>Login Here.</p> 
+                        </Link>
                     </div>
                 </form>
             </div>
@@ -107,18 +147,17 @@ class Reset extends Component {
     }
 }
 
-// Login.propTypes = {
-//     loginUser: PropTypes.func.isRequired,
-//     auth: PropTypes.object.isRequired,
-//     errors: PropTypes.object.isRequired
-// }
+Reset.propTypes = {
+    setNewPassword: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
+}
 
 const mapStateToProps = state => {
         return { 
             // user: state, 
             // auth: state.auth,
             errors: state.errors,
-            forgot: state.forgot
+            forgot: state.forgot.data
             }
 }
 

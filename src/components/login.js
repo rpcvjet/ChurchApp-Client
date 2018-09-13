@@ -3,10 +3,10 @@ import {FormControl, FormGroup, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {loginUser} from '../redux/actions/loginActions';
 import {connect} from 'react-redux'
-import '../css/login.css'
-
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import spinner from '../css/images/Spin-1.8s-200px.gif'
+import '../css/login.css'
 
 class Login extends Component {
   
@@ -59,8 +59,15 @@ class Login extends Component {
     render() {
 
         // setting up input validation
-        const { email, password, errors} = this.state;
-        // const isEnabled = email.length > 0 && password.length > 0;
+        const { errors } = this.state;
+        console.log('this.props', this.props)
+
+        if(this.props.loggingIn) {
+            return <div className='spinner'>
+                    <img src={spinner} className='gif' alt='loading gif'/>
+                    <p>Logging In...</p>
+                    </div>
+        }
 
         return(
         
@@ -126,6 +133,7 @@ const mapStateToProps = state => {
             user: state, 
             auth: state.auth,
             errors: state.errors,
+            loggingIn: state.login.loggingIn
             }
 }
 

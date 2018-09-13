@@ -8,9 +8,9 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-
-
+import  spinner from '../css/images/Spin-1.8s-200px.gif'
 import '../css/register.css'
+
 
 class Register extends Component {
 
@@ -65,10 +65,18 @@ class Register extends Component {
 
 
     render() {
-        // console.log('this.props register', this.props)
+        console.log('this.props', this.props)
+        
         const {fullname, email, password, password_confirm, errors } = this.state;
         const isEnabled = fullname.length > 3 && email.length > 0 && password === 
         password_confirm;
+
+        if(this.props.isFetching) {
+            return <div className='spinner'>
+                    <img src={spinner} className='gif' alt='registering gif'/>
+                    <p>Getting you Registered...</p>
+                    </div>
+        }
 
         return(
        <div className="register-wrapper">
@@ -153,7 +161,8 @@ Register.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    errors: state.errors
+    errors: state.errors,
+    isFetching: state.errors.isFetching
 });
 
 

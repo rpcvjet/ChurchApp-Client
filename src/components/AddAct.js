@@ -90,7 +90,6 @@ class AddAct extends Component {
   }
     const { text, actType} = this.state;
     const isEnabled = text.length > 15 && actType.length > 0;
-    // console.log('this.props act page', this.props)
 
     return (  
       <Fragment>
@@ -115,7 +114,7 @@ class AddAct extends Component {
                   maxLength="100"
                   className='explainarea' 
                   bsSize="large" componentClass="textarea" 
-                  placeholder="Explain you act in 100 charcters or less..." 
+                  placeholder="Explain you act..." 
                   value={this.state.text}
                   onChange={this.handleTextChange}  
                              

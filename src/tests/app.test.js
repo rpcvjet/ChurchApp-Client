@@ -7,7 +7,6 @@ import sandbox from './sandbox';
 
 describe('when the app mounts', () => {
     let app = shallow(<App />)
-    console.log(app.debug());
 
     it('renders Menu Item 1 ', () => {
         expect(app.find('MenuItem').at(0).exists()).toBe(true)
@@ -26,13 +25,6 @@ describe('when the app mounts', () => {
     }) 
 }) 
 
-
-
-        // it.only('should update the state false', () => {
-        //     app.setState({visible : true})
-        //     app.find('Sidebar').simulate('click');
-        //     expect(app.state().visible).toEqual(false)
-        // })
         
     
     

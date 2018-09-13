@@ -4,7 +4,6 @@ import Userdash from '../components/userdash';
 
 describe('when the form mounts', () => {
     let userdash = shallow(<Userdash />)
-    console.log(userdash.debug());
 
     it('renders Menu Item 1 ', () => {
         expect(userdash.find('MenuItem').at(0).exists()).toBe(true)

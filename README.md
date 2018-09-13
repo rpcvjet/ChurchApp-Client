@@ -29,10 +29,10 @@ Each user will be required to register and login.
 
   -Finalize color scheme :grimacing:
 
-  -Install Redux to collect global state
+  ~~-Install Redux to collect global state~~
 
-  -Add code to reset password.
+  ~~-Add code to reset password.~~
 
-  -Discuss design and feel of app with Mom
+  ~~Discuss design and feel of app with Mom~~
   
   -Deploy
