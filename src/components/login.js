@@ -15,7 +15,9 @@ class Login extends Component {
             email: '',
             password: '',
             submitted: false,
-            errors: {}
+            errors: {
+                errors:{}
+            }
     }
 
 
@@ -60,7 +62,8 @@ class Login extends Component {
 
         // setting up input validation
         const { errors } = this.state;
-        console.log('this.props', this.props)
+        console.log('PROPS', this.props)
+        console.log('STATE', this.state)
 
         if(this.props.loggingIn) {
             return <div className='spinner'>
@@ -132,8 +135,8 @@ const mapStateToProps = state => {
         return { 
             user: state, 
             auth: state.auth,
-            errors: state.errors,
-            loggingIn: state.login.loggingIn
+            errors: state.errors.errors
+            // loggingIn: state.login.loggingIn
             }
 }
 
