@@ -1,5 +1,5 @@
 
-import { SET_CURRENT_USER, GET_ERRORS,  REGISTER_REQUEST, REGISTER_SUCCESS, LOGIN_SUCCESS, LOGIN_REQUEST } from './constants';
+import { SET_CURRENT_USER, GET_ERRORS,  REGISTER_REQUEST, REGISTER_SUCCESS, LOGIN_SUCCESS, LOGIN_REQUEST, LOGIN_ERROR } from './constants';
 import setAuthToken from '../reduxUtils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 import axios from 'axios';
