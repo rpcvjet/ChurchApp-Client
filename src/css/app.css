@@ -80,7 +80,7 @@
         grid-auto-rows: (100px, auto);
         height: 100vh;
         grid-gap: 10px;
-        padding: 5px;
+        padding: 0px;
         grid-template-areas:
         "header"
         "data"
@@ -112,18 +112,27 @@
         display: none;
         visibility: hidden;
     }
-
-    .d3{
-        justify-self: center;
-    }
-
+    
     .data {
+        /* border: 1px solid blue; */
+
         grid-area: data;
         display: grid;
         grid-template-columns: 1fr;
-        padding-right: 2%
+
 
     }
+   
+
+    .d3 {
+        /* padding-right: 10%; */
+
+        /* border: 1px solid pink; */
+        /* justify-self: center; */
+        /* margin-right:50%; */
+        /* width:30%; */
+    }
+    
 
     a {
         padding: 5px;

@@ -8,9 +8,11 @@ import { userListReducer } from './userlistReducer';
 import { churchListReducer } from './churchlistReducer';
 import { visibilityReducer } from './visibilityReducer'
 import { forgotReducer } from './forgotReducer'
+import { errorReducer} from './errorReducer';
 
 const rootReducer = combineReducers({
-    errors: loginReducer,
+    errors: errorReducer,
+    login: loginReducer,
     auth :authReducer,
     app: appReducer,
     act: actReducer,

@@ -5,6 +5,8 @@ import { RESET_PASSWORD_SUCCESS,
 import axios from  'axios';
 
 const baseUrl = 'http://localhost:4000/api';
+// const baseUrl = 'https://api-churchapp.herokuapp.com/api';
+
 
 export function resetPassword(email) {
     return (dispatch) => {
@@ -24,7 +26,7 @@ export function resetPasswordSuccess(email) {
 }
 
 export function resetPasswordFailure (error) {
-            console.log('forgot action failure', error.response.data)
+        
     return {
         type: RESET_PASSWORD_FAILURE,
         payload: error.response.data
@@ -33,7 +35,6 @@ export function resetPasswordFailure (error) {
 
 
 export function setNewPassword(userData) {
-    console.log('user data', userData)
     return (dispatch) => {
         return axios.post(`${baseUrl}/reset`, userData)
         .then( (res) => { dispatch(setNewPasswordSuccess(res))})
@@ -42,7 +43,6 @@ export function setNewPassword(userData) {
 }
 
 export function setNewPasswordSuccess(userData) {
-    console.log('userData!!!', userData)
     return {
         type: SET_NEW_PASSWORD_SUCCESS,
         payload: userData
@@ -50,7 +50,6 @@ export function setNewPasswordSuccess(userData) {
 }
 
 export function setNewPasswordFailure(err) {
-    console.log('errr in action', err)
     return {
         type: SET_NEW_PASSWORD_FAILURE,
         payload: err.response.data

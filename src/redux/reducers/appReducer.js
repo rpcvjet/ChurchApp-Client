@@ -9,6 +9,7 @@ export function appReducer  (state = initialState, action) {
 
     switch(action.type) {
         
+        
         case GET_ALL_POINTS_REQUEST:
         return action.payload;
 

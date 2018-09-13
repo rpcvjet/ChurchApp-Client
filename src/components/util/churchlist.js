@@ -11,7 +11,6 @@ class ChurchList extends Component {
 
     
     componentWillReceiveProps(props) {
-
         let newarray = props.allacts && props.allacts.map( randomuser => {
             return randomuser;
             }).filter( filteredlist => {
@@ -24,15 +23,13 @@ class ChurchList extends Component {
 
     }
 
-    componentWillMount() {
-
-    }
-
     componentDidMount() {
-        
-        setInterval(() => {
-            this.randomQuote()
-        }, 5000);
+        console.log('this.props DID mount', this.props)
+            setInterval(() => {
+                this.randomQuote()
+            }, 5000);
+            console.log('DID mount state', this.state)
+           
     }
 
     
@@ -52,6 +49,16 @@ class ChurchList extends Component {
     }
     
     render() {
+
+        const { acts } = this.state
+
+            if(this.props.isLoading) {
+                return <p>Loading...</p>
+            }
+
+        console.log('this.state RENDER', this.state)
+        console.log('this.props RENDER', this.props)
+
         return(
             <div className='quote-wrapper'>
            

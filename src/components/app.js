@@ -29,7 +29,6 @@ class App extends Component {
         if(!this.props.auth.isAuthenticated){
             return <Redirect to='/login' />
         }
-        // console.log('this.props in app',this.props)
         return(
             <Fragment>
             <NavBar/>
@@ -42,12 +41,12 @@ class App extends Component {
                
                 <div className='data'>
                     <div className='d3'>
-                    <Chart chartData={this.props.points} />
+                    <Chart className="chartwidth" chartData={this.props.points} />
                     </div>
                 
                 </div>
                 <div className='mainsection'>
-                    <ChurchList allacts={this.props.churchlist} />
+                    <ChurchList allacts={this.props.churchlist} isLoading={this.props.isLoading} />
                 </div>
         
             </div>
@@ -63,10 +62,12 @@ function mapDispathToProps(dispatch) {
 
 
 
-const mapStateToProps  = state => {
+const mapStateToProps  = state => 
+{ 
     return {
         points: state.app,
         churchlist: state.churchlist.churchlist,
+        isLoading: state.churchlist.isLoading,
         auth: state.auth
     }
 }

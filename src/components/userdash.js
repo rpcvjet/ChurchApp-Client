@@ -85,7 +85,7 @@ import '../css/userdash.css';
                     <div className='header'> 
                         
                         <h1 className='desktopMessage'>{this.props.auth.user.fullname}, you've commited {this.props.userpoints.userpoints} Acts!</h1>
-                        <h1 className='mobileMessage'>Acts: {this.props.userpoints.data}</h1>
+                        <h1 className='mobileMessage'>Acts: {this.props.userpoints.userpoints}</h1>
                       
                     </div>
 

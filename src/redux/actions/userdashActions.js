@@ -8,6 +8,7 @@ import { GET_USERPOINTS_SUCCESS,
 
 } from './constants';
 const baseUrl = 'http://localhost:4000/api';
+// const baseUrl = 'https://api-churchapp.herokuapp.com/api';
 
 
 export function getUserPoints(id) {
