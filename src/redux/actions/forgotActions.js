@@ -4,7 +4,7 @@ import { RESET_PASSWORD_SUCCESS,
         SET_NEW_PASSWORD_FAILURE} from './constants'
 import axios from  'axios';
 
-const baseUrl = `${process.env.ENDPOINT}`;
+const baseUrl = process.env.ENDPOINT
 
 
 export function resetPassword(email) {
