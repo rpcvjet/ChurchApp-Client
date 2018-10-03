@@ -3,7 +3,7 @@ import { SET_CURRENT_USER, GET_ERRORS,  REGISTER_REQUEST, REGISTER_SUCCESS, LOGI
 import setAuthToken from '../reduxUtils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 import axios from 'axios';
-const baseUrl = `${process.env.ENDPOINT}`;
+const baseUrl = process.env.ENDPOINT
 
 
 export const registerUser = (user, history) => dispatch => {

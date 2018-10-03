@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { POST_ACT_SUCCESS, POST_ACT_FAILURE } from './constants';
-const baseUrl = `${process.env.ENDPOINT}`;
+const baseUrl = process.env.ENDPOINT
+
+
 
 export function sendActToDB(actdata) {
     return (dispatch) => {

@@ -7,7 +7,7 @@ import { GET_USERPOINTS_SUCCESS,
          REMOVE_TYPE_FILTER
 
 } from './constants';
-const baseUrl = `${process.env.ENDPOINT}`;
+const baseUrl = process.env.ENDPOINT
 
 
 export function getUserPoints(id) {
