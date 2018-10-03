@@ -4,7 +4,7 @@ import AddAct from '../components/AddAct';
 
 describe.only('when the app mounts', () => {
     let addact = shallow(<AddAct />)
-=
+
     it('verifys date state to false', () => {
         expect(addact.state().date).toEqual(null);
     })

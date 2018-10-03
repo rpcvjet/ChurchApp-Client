@@ -7,8 +7,7 @@ import { GET_USERPOINTS_SUCCESS,
          REMOVE_TYPE_FILTER
 
 } from './constants';
-const baseUrl = 'http://localhost:4000/api';
-// const baseUrl = 'https://api-churchapp.herokuapp.com/api';
+const baseUrl = `${process.env.ENDPOINT}`;
 
 
 export function getUserPoints(id) {

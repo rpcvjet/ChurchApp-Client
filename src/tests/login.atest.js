@@ -1,11 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import Login from '../components/login';
+import { shallow, mount } from 'enzyme';
+import {Login} from '../components/login';
 
 describe('When the login form mounts', () => {
 
         let login = shallow(<Login />)
-        let container;
     it('it renders the Login Form', () => {
             expect(login.find('Form').exists()).toBe(true);
         })

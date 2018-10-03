@@ -10,7 +10,6 @@ import classnames from 'classnames';
 import { setNewPassword } from '../redux/actions/forgotActions'
 
 class Reset extends Component {
-  
 
          state = {
             password: '',
@@ -20,7 +19,6 @@ class Reset extends Component {
             errors: {},
             forgot: {}
     }
-
 
     handlePasswordChange = event => {
         this.setState({password: event.target.value})
@@ -84,7 +82,7 @@ class Reset extends Component {
 
     render() {
       
-        const { password, confirm_password, errors, forgot } = this.state;
+        const { password, confirm_password, errors } = this.state;
         const isEnabled = password === confirm_password && password.length > 0 && confirm_password.length > 0;
 
         return(

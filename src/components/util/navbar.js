@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 import '../../css/navbar.css';
 
-class NavBarItem extends Component {
+ export class NavBarItem extends Component {
 
     onLogout = event => {
         this.props.logoutUser(this.props.history)
