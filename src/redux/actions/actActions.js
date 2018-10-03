@@ -1,9 +1,6 @@
 import axios from 'axios';
 import { POST_ACT_SUCCESS, POST_ACT_FAILURE } from './constants';
-const baseUrl = 'http://localhost:4000/api';
-// const baseUrl = 'https://api-churchapp.herokuapp.com/api';
-
-
+const baseUrl = `${process.env.ENDPOINT}`;
 
 export function sendActToDB(actdata) {
     return (dispatch) => {
@@ -13,7 +10,6 @@ export function sendActToDB(actdata) {
         .catch( err => {dispatch(sendActToDBFailure(err))})
     }
     
-
 }
 
 export function sendActToDBSuccess(actdata) {

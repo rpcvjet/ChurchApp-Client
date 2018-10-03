@@ -1,10 +1,9 @@
 
-import { SET_CURRENT_USER, GET_ERRORS,  REGISTER_REQUEST, REGISTER_SUCCESS, LOGIN_SUCCESS, LOGIN_REQUEST, LOGIN_ERROR } from './constants';
+import { SET_CURRENT_USER, GET_ERRORS,  REGISTER_REQUEST, REGISTER_SUCCESS, LOGIN_SUCCESS, LOGIN_REQUEST } from './constants';
 import setAuthToken from '../reduxUtils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 import axios from 'axios';
-const baseUrl = 'http://localhost:4000/api';
-// const baseUrl = 'https://api-churchapp.herokuapp.com/api';
+const baseUrl = `${process.env.ENDPOINT}`;
 
 
 export const registerUser = (user, history) => dispatch => {
@@ -49,15 +48,11 @@ export const  loginUserSuccess = (res) => dispatch => {
 }
 
 export function loginUserError(err) {
-        console.log('err',err)
     return {
         type: GET_ERRORS,
         payload: err.response.data
     }
 }
-
-
-
 
 export const setCurrentUser = decoded => {
     return {

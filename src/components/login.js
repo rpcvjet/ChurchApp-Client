@@ -10,7 +10,6 @@ import '../css/login.css'
 
 class Login extends Component {
   
-
          state = {
             email: '',
             password: '',
@@ -19,7 +18,6 @@ class Login extends Component {
                 errors:{}
             }
     }
-
 
     handleChange = event => {
         this.setState({email: event.target.value})
@@ -62,10 +60,8 @@ class Login extends Component {
 
         // setting up input validation
         const { errors } = this.state;
-        console.log('PROPS', this.props)
-        console.log('STATE', this.state)
 
-        if(this.props.loggingIn) {
+        if(this.props.loggingIn === 'true') {
             return <div className='spinner'>
                     <img src={spinner} className='gif' alt='loading gif'/>
                     <p>Logging In...</p>
@@ -74,9 +70,7 @@ class Login extends Component {
 
         return(
         
-            <div className='loginwrapper'>
-        
-            
+            <div className='loginwrapper'>      
                 <form size='large' className='loginform' onSubmit={this.handleSubmit}>
                     
                     <h1>ChurchApp</h1>
@@ -128,15 +122,14 @@ class Login extends Component {
 Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => {
         return { 
             user: state, 
             auth: state.auth,
-            errors: state.errors.errors
-            // loggingIn: state.login.loggingIn
+            errors: state.errors.errors,
+            loggingIn: state.errors.loggingIn
             }
 }
 

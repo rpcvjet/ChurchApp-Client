@@ -4,8 +4,7 @@ import { RESET_PASSWORD_SUCCESS,
         SET_NEW_PASSWORD_FAILURE} from './constants'
 import axios from  'axios';
 
-const baseUrl = 'http://localhost:4000/api';
-// const baseUrl = 'https://api-churchapp.herokuapp.com/api';
+const baseUrl = `${process.env.ENDPOINT}`;
 
 
 export function resetPassword(email) {
@@ -15,7 +14,6 @@ export function resetPassword(email) {
         .catch((err) => {dispatch(resetPasswordFailure(err))})
     }
 }
-
 
 export function resetPasswordSuccess(email) {
 
@@ -32,7 +30,6 @@ export function resetPasswordFailure (error) {
         payload: error.response.data
     }
 }
-
 
 export function setNewPassword(userData) {
     return (dispatch) => {

@@ -69,11 +69,6 @@ class ChurchList extends Component {
                 return <p>Loading...</p>
             }
 
-        console.log('this.state RENDER', this.state)
-
-        
-
-
         return(
             <div className='quote-wrapper'>
            

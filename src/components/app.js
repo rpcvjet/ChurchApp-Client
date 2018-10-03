@@ -1,14 +1,15 @@
 import React, { Component, Fragment } from 'react';
+import NavBar from '../components/util/navbar';
 import Chart from './util/chart';
 import ChurchList from './util/churchlist'
-import NavBar from '../components/util/navbar';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { getAllPoints, getAllActs } from '../redux/actions/appActions';
 import '../css/app.css';
 import { bindActionCreators } from 'redux';
 
-class App extends Component {
+
+export class App extends Component {
     
     constructor(props) {
         super(props);

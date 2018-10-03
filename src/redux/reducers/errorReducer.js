@@ -1,7 +1,6 @@
 import { GET_ERRORS, 
         LOGIN_REQUEST,
         LOGIN_SUCCESS, 
-        LOGIN_ERROR,
         REGISTER_REQUEST, 
         REGISTER_SUCCESS, 
         } from '../actions/constants';
@@ -21,7 +20,6 @@ export function errorReducer (state = initialState, action ) {
                 loggingIn: false
             };
 
-
         case REGISTER_REQUEST:
             return {
                 ...state,
@@ -36,10 +34,10 @@ export function errorReducer (state = initialState, action ) {
         
         case LOGIN_REQUEST:
                 return {
-                    ...state,
-                    loggingIn: true
+                ...state,
+                loggingIn: true
                 }
-            
+                           
         case LOGIN_SUCCESS:
             return {
                 ...state,
