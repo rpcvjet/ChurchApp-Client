@@ -1,6 +1,10 @@
 {
   "name": "churchapp",
   "version": "0.1.0",
+  "engines": {
+    "npm" : "6.1.0",
+    "node": "10.1.0"
+  },
   "private": true,
   "dependencies": {
     "@coreui/coreui": "^2.0.4",
@@ -25,10 +29,11 @@
     "sinon": "^6.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "REACT_APP_STAGE=dev react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "devDependencies": {
     "enzyme-adapter-react-16": "^1.1.1"
