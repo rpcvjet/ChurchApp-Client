@@ -3,12 +3,16 @@ import { SET_CURRENT_USER, GET_ERRORS,  REGISTER_REQUEST, REGISTER_SUCCESS, LOGI
 import setAuthToken from '../reduxUtils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 import axios from 'axios';
-const baseUrl = process.env.ENDPOINT
+
+let API_URL;
+process.env.REACT_APP_STAGE === 'dev'
+  ? API_URL = 'http://localhost:4000/api'
+  : API_URL = 'https://api-churchapp.herokuapp.com'
 
 
 export const registerUser = (user, history) => dispatch => {
     dispatch({type: REGISTER_REQUEST})
-    return axios.post(`${baseUrl}/signup`,user)
+    return axios.post(`${API_URL}/signup`,user)
     .then( 
         (res) => { 
         dispatch({type: REGISTER_SUCCESS})
@@ -27,7 +31,7 @@ export const registerUser = (user, history) => dispatch => {
 
 export const loginUser = (userInfo) => dispatch => {
         dispatch({type: LOGIN_REQUEST}) 
-        return axios.post(`${baseUrl}/login`, userInfo)
+        return axios.post(`${API_URL}/login`, userInfo)
         .then( (res) => {dispatch(loginUserSuccess(res))})
         .catch(err => { dispatch(loginUserError(err))})
     

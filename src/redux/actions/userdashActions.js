@@ -7,12 +7,18 @@ import { GET_USERPOINTS_SUCCESS,
          REMOVE_TYPE_FILTER
 
 } from './constants';
-const baseUrl = process.env.ENDPOINT
+
+let API_URL;
+
+process.env.REACT_APP_STAGE === 'dev'
+  ? API_URL = 'http://localhost:4000/api'
+  : API_URL = 'https://api-churchapp.herokuapp.com'
+
 
 
 export function getUserPoints(id) {
     return (dispatch) => {
-        return axios.get(`${baseUrl}/acts/total/`+ id)
+        return axios.get(`${API_URL}/acts/total/`+ id)
         .then((res) => { dispatch(getPointsSuccess(res)) })
         .catch( (err) => { dispatch(getPointsFailure(err))  })
     }
@@ -35,7 +41,7 @@ export function getPointsFailure(err) {
 ////
 export function getActList(id) {
     return (dispatch) => {
-        return axios.get(`${baseUrl}/acts/`+ id)
+        return axios.get(`${API_URL}/acts/`+ id)
         .then((res) => { dispatch(getActSuccess(res)) })
         .catch( (err) => { dispatch(getActFailure(err))  })
     }

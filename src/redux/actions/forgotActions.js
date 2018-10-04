@@ -4,12 +4,15 @@ import { RESET_PASSWORD_SUCCESS,
         SET_NEW_PASSWORD_FAILURE} from './constants'
 import axios from  'axios';
 
-const baseUrl = process.env.ENDPOINT
+let API_URL
+process.env.REACT_APP_STAGE === 'dev'
+  ? API_URL = 'http://localhost:4000/api'
+  : API_URL = 'https://api-churchapp.herokuapp.com'
 
 
 export function resetPassword(email) {
     return (dispatch) => {
-        return axios.post(`${baseUrl}/forgot`, email)
+        return axios.post(`${API_URL}/forgot`, email)
         .then( (res) => { dispatch(resetPasswordSuccess(res))})
         .catch((err) => {dispatch(resetPasswordFailure(err))})
     }
@@ -33,7 +36,7 @@ export function resetPasswordFailure (error) {
 
 export function setNewPassword(userData) {
     return (dispatch) => {
-        return axios.post(`${baseUrl}/reset`, userData)
+        return axios.post(`${API_URL}/reset`, userData)
         .then( (res) => { dispatch(setNewPasswordSuccess(res))})
         .catch((err) => {dispatch(setNewPasswordFailure(err))})
     }
