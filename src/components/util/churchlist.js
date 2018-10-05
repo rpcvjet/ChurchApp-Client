@@ -8,19 +8,15 @@ class ChurchList extends Component {
            text:'',
            name: '',
          }
-
-    
+ 
     componentWillReceiveProps(props) {
         let newarray = props.allacts && props.allacts.map( randomuser => {
             return randomuser;
             }).filter( filteredlist => {
                 return filteredlist.acts.length > 0
             })
-            
-        
+                  
         this.setState({ acts: newarray })
-
-
     }
 
     componentWillUnmount() {
@@ -32,17 +28,13 @@ class ChurchList extends Component {
             this.renderSlideShow()
         },5000)
     }
-
-   
-
-    
+  
     renderSlideShow = () => {
         if(this.state.acts && this.state.acts.length == 0) {
             return <div></div>
         }
         else {
 
-            
             let user = this.state.acts[Math.floor(Math.random() * this.state.acts.length)];
             
             let wordsArray = [];
@@ -52,18 +44,14 @@ class ChurchList extends Component {
                     return words
                 });
             let screenword = wordsArray[Math.floor(Math.random() * wordsArray.length)]
-            
-           
+                    
             this.setState({text: screenword});
             this.setState({name: user.fullname});
            
         }
-
-
     }
     
     render() {
-        const { acts } = this.state
 
             if(this.props.isLoading) {
                 return <p>Loading...</p>
@@ -79,8 +67,6 @@ class ChurchList extends Component {
             </div>
         )
     }
-
-
 }
 
 export default ChurchList;

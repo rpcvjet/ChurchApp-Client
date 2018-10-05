@@ -17,14 +17,19 @@ import { setCurrentUser } from './redux/actions/loginActions';
 import jwt_decode from 'jwt-decode';
 
 const middleware = applyMiddleware(thunk);
-const store = createStore(rootReducer, compose(middleware,window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__()));
+const store = createStore(
+    rootReducer, 
+    compose(
+        middleware,
+        window.navigator.userAgent.includes('Chrome') ?
+        window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__() : compose
+        ));
 
 if(localStorage.jwtToken) {
     setAuthToken(localStorage.jwtToken);
     const decoded = jwt_decode(localStorage.jwtToken);
     store.dispatch(setCurrentUser(decoded));
 }
-
 
 ReactDOM.render(
 <Provider store={store}>

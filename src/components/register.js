@@ -19,7 +19,9 @@ class Register extends Component {
         email: '',
         password: '',
         password_confirm:'',
-        errors: {}
+        errors: {
+            errors: {}
+        }
     }
 
 
@@ -159,7 +161,7 @@ Register.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    errors: state.errors,
+    errors: state.errors.errors,
     isFetching: state.errors.isFetching
 });
 
