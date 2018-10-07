@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GET_ALL_POINTS_SUCCESS, GET_ALL_POINTS_FAILURE, GET_ALLACTS_SUCCESS, GET_ALLACTS_FAILURE, GET_ALLACTS_REQUEST } from './constants';
 
-const REACT_APP_API_URL = process.env.REACT_APP_API_URL
+const API_URL = process.env.API_URL || "http://localhost:4000/api"
 
 
 
@@ -9,7 +9,7 @@ const REACT_APP_API_URL = process.env.REACT_APP_API_URL
 
 export function getAllPoints() {
     return (dispatch) => {
-        return axios.get(`${REACT_APP_API_URL}/admin/totalpoints`)
+        return axios.get(`${API_URL}/admin/totalpoints`)
         .then ((res) => { dispatch(getAllPointsSuccess(res)) })
         .catch((err) => { dispatch(getAllPointsError(err)) })
         
@@ -33,7 +33,7 @@ export function getAllPoints() {
 export function getAllActs(){
     return (dispatch) => {
         dispatch({type: GET_ALLACTS_REQUEST})
-        return axios.get(`${REACT_APP_API_URL}/acts`)
+        return axios.get(`${API_URL}/acts`)
         .then ((res) => { dispatch(getAllActsSuccess(res)) })
         .catch((err) => { dispatch(getAllActsError(err)) })
         

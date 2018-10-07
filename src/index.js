@@ -1,3 +1,4 @@
+import '@babel/polyfill'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from "./components/app";
@@ -17,14 +18,27 @@ import { setCurrentUser } from './redux/actions/loginActions';
 import jwt_decode from 'jwt-decode';
 
 const middleware = applyMiddleware(thunk);
-const store = createStore(rootReducer, compose(middleware,window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__()));
+const initialState = {}
+
+let devTools = window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__();
+if (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'production') {
+    devTools = a => a;
+}
+
+
+const store = createStore(
+    rootReducer, 
+    initialState,
+    compose(
+        middleware,
+        devTools
+        ));
 
 if(localStorage.jwtToken) {
     setAuthToken(localStorage.jwtToken);
     const decoded = jwt_decode(localStorage.jwtToken);
     store.dispatch(setCurrentUser(decoded));
 }
-
 
 ReactDOM.render(
 <Provider store={store}>

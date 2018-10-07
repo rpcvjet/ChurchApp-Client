@@ -22,7 +22,7 @@ export class App extends Component {
 
     componentDidMount() {   
         this.props.getAllPoints();
-        this.props.getAllActs();      
+        this.props.getAllActs();     
         }
 
 

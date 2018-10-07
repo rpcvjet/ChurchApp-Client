@@ -8,13 +8,13 @@ import { GET_USERPOINTS_SUCCESS,
 
 } from './constants';
 
-const REACT_APP_API_URL = process.env.REACT_APP_API_URL
+const API_URL = process.env.API_URL || "http://localhost:4000/api"
 
 
 
 export function getUserPoints(id) {
     return (dispatch) => {
-        return axios.get(`${REACT_APP_API_URL}/acts/total/`+ id)
+        return axios.get(`${API_URL}/acts/total/`+ id)
         .then((res) => { dispatch(getPointsSuccess(res)) })
         .catch( (err) => { dispatch(getPointsFailure(err))  })
     }
@@ -37,7 +37,7 @@ export function getPointsFailure(err) {
 ////
 export function getActList(id) {
     return (dispatch) => {
-        return axios.get(`${REACT_APP_API_URL}/acts/`+ id)
+        return axios.get(`${API_URL}/acts/`+ id)
         .then((res) => { dispatch(getActSuccess(res)) })
         .catch( (err) => { dispatch(getActFailure(err))  })
     }
