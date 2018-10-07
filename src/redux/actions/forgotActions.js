@@ -4,13 +4,13 @@ import { RESET_PASSWORD_SUCCESS,
         SET_NEW_PASSWORD_FAILURE} from './constants'
 import axios from  'axios';
 
-const REACT_APP_API_URL = process.env.REACT_APP_API_URL
+const API_URL = process.env.API_URL || "http://localhost:4000/api"
 
 
 
 export function resetPassword(email) {
     return (dispatch) => {
-        return axios.post(`${REACT_APP_API_URL}/forgot`, email)
+        return axios.post(`${API_URL}/forgot`, email)
         .then( (res) => { dispatch(resetPasswordSuccess(res))})
         .catch((err) => {dispatch(resetPasswordFailure(err))})
     }
@@ -34,7 +34,7 @@ export function resetPasswordFailure (error) {
 
 export function setNewPassword(userData) {
     return (dispatch) => {
-        return axios.post(`${REACT_APP_API_URL}/reset`, userData)
+        return axios.post(`${API_URL}/reset`, userData)
         .then( (res) => { dispatch(setNewPasswordSuccess(res))})
         .catch((err) => {dispatch(setNewPasswordFailure(err))})
     }

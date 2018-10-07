@@ -1,3 +1,4 @@
+import '@babel/polyfill'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from "./components/app";
@@ -17,12 +18,20 @@ import { setCurrentUser } from './redux/actions/loginActions';
 import jwt_decode from 'jwt-decode';
 
 const middleware = applyMiddleware(thunk);
+const initialState = {}
+
+let devTools = window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__();
+if (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'production') {
+    devTools = a => a;
+}
+
+
 const store = createStore(
     rootReducer, 
+    initialState,
     compose(
         middleware,
-        window.navigator.userAgent.includes('Chrome') ?
-        window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__() : compose
+        devTools
         ));
 
 if(localStorage.jwtToken) {
