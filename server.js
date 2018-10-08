@@ -3,8 +3,8 @@
 const express = require('express')
 
 express()
-  .use(express.static(`${__dirname}/build`))
-  .get('*', (req, res) => res.sendFile(`${__dirname}/build/index.html`))
+  .use(express.static(__dirname + '/dist'))
+  .get('*', (req, res) => res.sendFile(__dirname + '/dist/index.html'))
   .listen(process.env.PORT, () => {
     console.log('server up', process.env.PORT)
   })
