@@ -6,6 +6,13 @@
     "node": "10.1.0"
   },
   "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --compress --open --env.mode development",
+    "dev": "webpack --env.mode development --progress",
+    "prod": "webpack -p --env.mode production --progress",
+    "prod:analyze": "npm run prod -- --env.presets analyze",
+    "heroku-prebuild": "npm run prod"
+  },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "axios": "^0.18.0",
@@ -20,19 +27,11 @@
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
     "react-test-renderer": "^16.4.1",
     "react-transition-group": "^2.4.0",
     "recharts": "^1.1.0",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0"
-  },
-  "scripts": {
-    "start": "webpack-dev-server --compress --open --env.mode development",
-    "dev": "webpack --env.mode development --progress",
-    "prod": "webpack --env.mode production --progress",
-    "prod:analyze": "npm run prod -- --env.presets analyze",
-    "heroku-postbuild": "npm run prod"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
