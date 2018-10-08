@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { POST_ACT_SUCCESS, POST_ACT_FAILURE } from './constants';
 
-const API_URL = process.env.API_URL || "http://localhost:4000/api"
+// const API_URL = process.env.API_URL
  
 export function sendActToDB(actdata) {
     return (dispatch) => {

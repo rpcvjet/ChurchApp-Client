@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GET_ALL_POINTS_SUCCESS, GET_ALL_POINTS_FAILURE, GET_ALLACTS_SUCCESS, GET_ALLACTS_FAILURE, GET_ALLACTS_REQUEST } from './constants';
 
-const API_URL = process.env.API_URL || "http://localhost:4000/api"
+// const API_URL = process.env.API_URL
 
 
 
