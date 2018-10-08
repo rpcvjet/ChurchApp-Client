@@ -5,7 +5,6 @@ const dotenv = require('dotenv')
 const path = require('path');
 const webpack = require('webpack')
 const CleanPlugin = require('clean-webpack-plugin')
-const webpackMerge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -17,9 +16,9 @@ dotenv.load();
 
 module.exports =  {
         mode: process.env.NODE_ENV,
-        entry: './src/index.js',
+        entry: `${__dirname}/src/index.js`,
         output: {
-            path: path.join(__dirname, '/dist'),
+            path: `${__dirname}/build`,
             filename: "bundle.js",
         },
         devtool: 'cheap-module-source-map',
@@ -47,11 +46,6 @@ module.exports =  {
                 }
             ]
         },
-        devServer: {
-            proxy: {
-                '/api': 'http://localhost:4000',
-            }
-          },
         plugins: [
             new CleanPlugin(['dist']),
             new HtmlWebpackPlugin({
