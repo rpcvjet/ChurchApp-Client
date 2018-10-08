@@ -32,7 +32,7 @@
     "dev": "webpack --env.mode development --progress",
     "prod": "webpack --env.mode production --progress",
     "prod:analyze": "npm run prod -- --env.presets analyze",
-    "heroku-postbuild": "npm run webpack"
+    "heroku-postbuild": "npm run prod"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
