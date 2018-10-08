@@ -7,13 +7,13 @@
   },
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --compress --open --env.mode development",
+    "build": "webpack-dev-server --compress --open --env.mode development",
     "dev": "webpack --env.mode development --progress",
     "prod": "webpack --env.mode production --progress",
     "prod:analyze": "npm run prod -- --env.presets analyze",
-    "build" : "webpack -p",
+    "start" : "webpack -p",
     "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
-  "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production"
+    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
