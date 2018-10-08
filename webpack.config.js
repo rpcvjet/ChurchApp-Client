@@ -16,9 +16,9 @@ dotenv.load();
 
 module.exports =  {
         mode: process.env.NODE_ENV,
-        entry: './src/index.js',
+        entry: `${__dirname}/src/index.js`,
         output: {
-            path: './build',
+            path: `${__dirname}/build`,
             filename: "bundle.js",
         },
         devtool: 'cheap-module-source-map',
@@ -54,7 +54,7 @@ module.exports =  {
             }), 
             new webpack.ProgressPlugin(),
             new MiniCssExtractPlugin(),
-            new webpack.DefinePlugin({API_URL: JSON.stringify(process.env.API_URL)})
+            new webpack.DefinePlugin({ API_URL: JSON.stringify(process.env.API_URL)})
         ],
         optimization: {
             splitChunks: {
