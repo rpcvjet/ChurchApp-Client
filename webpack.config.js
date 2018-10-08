@@ -53,7 +53,8 @@ module.exports =  {
                 filename: "index.html"
             }), 
             new webpack.ProgressPlugin(),
-            new MiniCssExtractPlugin()
+            new MiniCssExtractPlugin(),
+            new webpack.DefinePlugin({API_URL: JSON.stringify(process.env.API_URL)})
         ],
         optimization: {
             splitChunks: {
