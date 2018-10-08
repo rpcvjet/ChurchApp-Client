@@ -16,9 +16,9 @@ dotenv.load();
 
 module.exports =  {
         mode: process.env.NODE_ENV,
-        entry: `${__dirname}/src/index.js`,
+        entry: './src/index.js',
         output: {
-            path: `${__dirname}/build`,
+            path: './build',
             filename: "bundle.js",
         },
         devtool: 'cheap-module-source-map',
